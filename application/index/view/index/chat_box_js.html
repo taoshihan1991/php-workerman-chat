@@ -1,0 +1,141 @@
+;!function(win, doc) {
+    "use strict";
+
+    var config = {
+        domain: "{$domain}",
+        uid: 'TEST-UID',
+        uName: 'TEST-UNAME',
+        avatar: 'TEST-AVATAR'
+    }
+
+    , ws_ck_div
+    , ws_icon_img
+    , ws_chat_div
+
+    , ck_style = "{$baseCss}"
+
+    , chat_style = "position:fixed;bottom:50px;z-index:201902151030;right:20px;padding:0;margin:0;"
+        + "overflow:hidden;background-color:transparent;box-shadow:0 0 20px 0 rgba(0, 0, 0, .15);"
+
+    , hide_style= "display:none"
+
+    , show_style = "display:block"
+
+    , ServiceChat = function () {
+        this.v = '2.0';
+    }
+
+    , setCustomer = function (customer) {
+
+        localStorage.setItem('uid', customer.uid);
+        localStorage.setItem('uName', customer.uName);
+        localStorage.setItem('avatar', customer.avatar);
+    }
+
+    , getCustomer = function () {
+
+        return {
+            uid: localStorage.getItem('uid'),
+            uName: localStorage.getItem('uName'),
+            avatar: localStorage.getItem('avatar'),
+            referrer: localStorage.getItem('ai_service_referrer')
+        };
+    }
+
+    , showChat = function () {
+
+        doc.getElementById("WS-SHOW-CHAT").onclick = function () {
+            ws_ck_div.setAttribute("style", ck_style + hide_style);
+            ws_chat_div.setAttribute("style", chat_style + show_style);
+
+            doc.getElementById("parentIframe").contentWindow.postMessage(JSON.stringify({cmd: 'open_chat'}), '{$domain}');
+        };
+    }
+
+    , createBox = function () {
+
+        ws_ck_div = document.createElement("div");
+        ws_ck_div.setAttribute("style", ck_style);
+        ws_ck_div.setAttribute("id", "WS-SHOW-CHAT");
+        ws_icon_img = document.createElement("img");
+        ws_icon_img.setAttribute("src", "{$domain}/static/common/images/chat/chat-{$style['box_icon']}.png");
+        ws_icon_img.setAttribute("style", "height: 32px;width: 32px;margin-left: -9px;");
+        ws_ck_div.appendChild(ws_icon_img);
+        var text = document.createTextNode("{$style['box_title']}");
+        ws_ck_div.appendChild(text);
+        doc.body.appendChild(ws_ck_div);
+
+        ws_chat_div = document.createElement("div");
+        ws_chat_div.setAttribute("style", chat_style + hide_style);
+        doc.body.appendChild(ws_chat_div);
+
+        var ws_iframe = document.createElement("iframe");
+        ws_iframe.scrolling = "no";
+
+        ws_iframe.setAttribute("frameborder", "0", 0);
+        ws_iframe.setAttribute("id", "parentIframe");
+        ws_iframe.setAttribute("width", "400px");
+        ws_iframe.setAttribute("height", "500px");
+
+        ws_iframe.src = config.domain + "/index/index/clibox/u/{$seller}/t/{$time}/tk/{$token}";
+        ws_chat_div.appendChild(ws_iframe);
+
+        showChat();
+    }
+
+    , hideChatDiv = function () {
+
+        ws_ck_div.setAttribute("style", ck_style + show_style);
+        ws_chat_div.setAttribute("style", chat_style + hide_style);
+    };
+
+    win.addEventListener('message', function(event){
+        if('hide_chat' == event.data) {
+            hideChatDiv();
+        } else if('show_chat' == event.data) {
+            doc.getElementById("WS-SHOW-CHAT").click();
+        }
+    }, false);
+
+    win.onload = function() {
+        doc.getElementById("parentIframe").contentWindow.postMessage(JSON.stringify({cmd: 'c_info', data: getCustomer()}), '*');
+    };
+
+    ServiceChat.prototype.init = function (conf) {
+        for(var key in conf){
+            if(config.hasOwnProperty(key) === true){
+                config[key] = conf[key];
+            }
+        }
+
+        var customerInfo = getCustomer();
+
+        if(config.uid == 'TEST-UID') {
+            if (customerInfo.uid == null) {
+                config.uid = Number(Math.random().toString().substr(3, 4) + Date.now()).toString(36);
+            } else {
+                config.uid = customerInfo.uid;
+            }
+        }
+
+        if(config.uName == 'TEST-UNAME') {
+            config.uName = '访客' + config.uid;
+        }
+
+        if(config.avatar == 'TEST-AVATAR') {
+            if (customerInfo.avatar == null) {
+                config.avatar = '{$domain}/static/common/images/customer.png';
+            } else {
+                config.avatar = customerInfo.avatar;
+            }
+        }
+
+        setCustomer(config);
+        createBox();
+
+        localStorage.setItem('ai_service_referrer', document.referrer);
+    };
+
+    win.ServiceChat = new ServiceChat();
+
+}(window, document);

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>在线客服系统_全渠道智能客服_AI智能客服_PHPWorkermanChat</title>
+    <meta name="keywords" content="网上客服系统,在线客服系统,智能客服,云客服系统,在线客服平台,IM客服软件,多渠道统一智能客服,全渠道客服系统">
+    <meta name="description" content="AI智能在线客服系统,支持网页、微信、微博、APP、邮件等全渠道覆盖接入。主动营销服务：专注线上转化。数据报表:种类繁多，细致全面，拥有300多种，为量化客服管理提供支持。30万+家企业用户正在使用AI智能客服提供的在线客服系统、智能客服、云客服系统、在线客服平台、IM客服软件、云客服平台、全渠道客服系统，AI智能客服为企业在线客服团队用户提速增效、优化服务体验。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta content="email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- 版本-->
+    <link href="__STATIC__/sy/css/style.css" type="text/css" rel="stylesheet">
+
+    <link href="__STATIC__/sy/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/animate.css">
+    <link href="__STATIC__/sy/css/base.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/home.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/agent.css" type="text/css" rel="stylesheet">
+    <!-- pc 主页 -->
+    <link href="__STATIC__/sy/css/home_layout.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__STATIC__/sy/css/slide.css">
+
+    <link rel="stylesheet" href="__STATIC__/sy/css/layer.css" id="layuicss-layer">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/loader.css">
+    </head>
+<body>
+<header class="aichat-header aichat-limit-width">
+    <div class="aichat-header-bd">
+        <img src="__STATIC__/sy/img/logo.png" class="aichat-logo">
+        <ul class="aichat-nav">
+            <li class="aichat-nav-item">
+                <a class="aichat-link" href="/">首页</a>
+            </li>
+             <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+            </li>
+            <li class="aichat-nav-item ">
+                <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+            </li>
+             <li class="aichat-nav-item  aichat-active">
+                <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+
+   <div class="aichat-header-ft">
+        {if empty(session('seller_user_name'))}
+        <a class="aichat-link" href="/seller/login/index">登录</a>
+        <div class="aichat-header-ft-hr"></div>
+        <a class="aichat-link" href="/seller/login/reg">免费试用</a>
+           {else}
+        <a class="aichat-link" href="/seller/index">进入工作台</a>
+        {/if}
+    </div>
+</header>
+<header class="aichat-header-mobile ">
+    <a href="/index/index.html"><img src="__STATIC__/sy/img/logo.png" class="aichat-logo"></a>
+    <div id="nav-icon2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+<ul class="aichat-nav-mobile">
+    <div class="aichat-nav-mobile-inner">
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/">首页</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+        </li>
+          <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+        </li>
+    </div>
+</ul>
+<style>.aichat-footer {
+    margin-top: -490px;
+}
+
+@media screen and (max-width: 1200px) {
+    .aichat-footer {
+        margin-top: 0;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: white;
+}
+
+.aichat-swiper-pagination {
+    margin-top: -30px;
+    text-align: center;
+}
+</style>
+    <link rel="stylesheet" href="__STATIC__/sy/css/translation.css" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/sy/css/common.css" type="text/css">
+    <div id="body" data-page="deep_page">
+        <div class="deeppage-main body-main">
+            <div class="body-wrapper">
+                <div class="deeppage-main-wrapper">
+                    <h1 class="deeppage-main-title font-sans-bold">全渠道智能在线客服
+统一管理，智能服务</h1>
+                    <h2 class="deeppage-main-subtitle font-sans-light">提升在线客服效率，专注线上转化</h2>
+                    <div class="body-form"><a href="https://shang.qq.com/wpa/qunwpa?idkey=123456" class="body-form-button font-sans-medium">联系我们</a><span class="body-form-entice font-sans-regular">(支持72小时免费测试)</span></div>
+                </div>
+                <div style="background-image:url(__STATIC__/sy/img/illustration_1.svg)" class="deeppage-main-illustration"></div>
+            </div>
+        </div>
+        <div class="body-secondary">
+            <div class="deeppage-content body-main">
+                <div class="body-wrapper">
+                    <p class="deeppage-content-description font-sans-regular">
+                        <h3 style="font-size: 35px;font-weight: 600;color: #35466f;line-height: 60px;margin-bottom: 16px;">关于PHPWorkermanChat </h3>
+                        <p style="font-size: 20px;font-weight: 400;color: #1d2754;line-height: 32px;text-align: center;margin-top: 24px;">PHPWorkermanChat 提供一站式智能客服解决方案，旗下拥有在线客服、呼叫中心、客服机器人、工单系统、语音机器人、客服外包等产品及服务，致力于帮助企业获客、销售和服务场景的效率提升，助力更多企业实现数字化转型，让智能服务惠及每一个人
+截至 2021 年第四季度，贝拓服务企业用户已超过 35 万家，覆盖互联网软件、教育培训、医疗、电子商务、金融、生活服务和房地产等行业领域
+ </p>
+
+                    </p>
+                  <div class="deeppage-content-video-wrapper"><video loop="" muted="" playsinline="" paused=""
+                loading="lazy" class="deeppage-content-video wow animated" style="visibility: visible;"
+               id="content-video" autoplay="">
+                 <source src="https://show.17sucai.com/preview/1424582/2020-09-29/nin/m/Animal+Crossing+New+Horizons+-+Introduction.mp4" type="video/mp4">
+                   </video>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .aichat-footer{margin-top:0 !important}
+    </style>
+   <footer class="aichat-footer aichat-limit-width">
+    <div class="aichat-footer-bd aichat-module">
+        <div class="aichat-company-info">
+            <img src="__STATIC__/sy/img/logo2.png" class="aichat-footer-logo">
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">客服微信：</span>
+                <span class="aichat-company-info-item-value">AS123456789</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">联系邮箱：</span>
+                <span class="aichat-company-info-item-value">123456789@qq.com</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">投诉邮箱：</span>
+                <span class="aichat-company-info-item-value">admin@hao123.com</span>
+            </p>
+        </div>
+        <div class="aichat-company-wechat">
+            <img src="__STATIC__/sy/img/qrcode_430.jpeg" class="aichat-company-wechat-qr">
+            <div class="aichat-company-wechat-text">扫码关注官网</div>
+        </div>
+    </div>
+
+    <div class="aichat-footer-ft">
+        <!-- nav -->
+        <ul class="aichat-footer-nav">
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">关于PHPWorkermanChat</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助中心</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">服务条款</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助文档</a>
+            </li>
+
+        </ul>
+
+        <!-- copyright -->
+        <mark class="aichat-copyright">Copyright © PHPWorkermanChat All Rights Reserved 仅供开发测试 <a href="https://beian.miit.gov.cn/" target="_blank" class="aichat-icp">京ICP备0602007579号</a>
+        </mark>
+
+    </div>
+
+</footer>
+<script src="__STATIC__/sy/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery.cookie.min.js" crossorigin="anonymous"></script>
+<script src="__STATIC__/sy/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/common.js"></script>
+<script src="__STATIC__/sy/js/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/wow.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/home.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery-8b229831f4.min.js"></script>
+<style>img{vertical-align: middle;}#minblzxmsgtitlecontainer{background-color#0682ff!important;}</style>
+
+<script>
+function showKf(){
+    $("#_aichat_chat_iframe,._aichat_chat_iframe").toggle();
+    $("._aichat_chat_button_list").toggleClass("_aichat_chat_button_active");
+}
+    // (function(a, b, c, d, e, j, s) {
+    //   a[d] = a[d] || function() {
+    //     (a[d].z = a[d].z || []).push(arguments);
+    //   };
+    //   s = b.createElement(c), 
+    //       j = b.getElementsByTagName(c)[0];
+    //   s.async = true;
+    //   s.charset = 'UTF-8';
+    //   s.src = 'https://static.aichat.net/widget/loader.js';
+    //   j.parentNode.insertBefore(s, j);
+    // })(window, document, 'script', '_AICHAT');
+    // _AICHAT('ini',{ channelId : 'tT3PO752dM92gBke'});
+</script>
+
+
+
+</body></html>

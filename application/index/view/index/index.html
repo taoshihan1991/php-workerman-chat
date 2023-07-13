@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>在线客服系统_全渠道智能客服_AI智能客服_PHPWorkermanChat</title>
+    <meta name="keywords" content="网上客服系统,在线客服系统,智能客服,云客服系统,在线客服平台,IM客服软件,多渠道统一智能客服,全渠道客服系统">
+    <meta name="description" content="AI智能在线客服系统,支持网页、微信、微博、APP、邮件等全渠道覆盖接入。主动营销服务：专注线上转化。数据报表:种类繁多，细致全面，拥有300多种，为量化客服管理提供支持。30万+家企业用户正在使用AI智能客服提供的在线客服系统、智能客服、云客服系统、在线客服平台、IM客服软件、云客服平台、全渠道客服系统，AI智能客服为企业在线客服团队用户提速增效、优化服务体验。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta content="email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- 版本-->
+    <link href="__STATIC__/sy/css/style.css" type="text/css" rel="stylesheet">
+
+    <link href="__STATIC__/sy/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/animate.css">
+    <link href="__STATIC__/sy/css/base.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/home.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/agent.css" type="text/css" rel="stylesheet">
+    <!-- pc 主页 -->
+    <link href="__STATIC__/sy/css/home_layout.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__STATIC__/sy/css/slide.css">
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/loader.css">
+    </head>
+<body>
+<header class="aichat-header aichat-limit-width">
+    <div class="aichat-header-bd">
+        <img src="__STATIC__/sy/img/logo.png">
+        <ul class="aichat-nav">
+            <li class="aichat-nav-item aichat-active">
+                <a class="aichat-link" href="/">首页</a>
+            </li>
+            <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+            </li>
+            <li class="aichat-nav-item ">
+                <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+            </li>
+             <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="aichat-header-ft">
+        {if empty(session('seller_user_name'))}
+        <a class="aichat-link" href="/seller/login/index">登录</a>
+        <div class="aichat-header-ft-hr"></div>
+        <a class="aichat-link" href="/seller/login/reg">免费试用</a>
+           {else}
+        <a class="aichat-link" href="/seller/index">进入工作台</a>
+        {/if}
+    </div>
+</header>
+<header class="aichat-header-mobile ">
+    <a href="/index/index.html"><img src="__STATIC__/sy/img/logo.png" class="aichat-logo"></a>
+    <div id="nav-icon2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+<ul class="aichat-nav-mobile">
+    <div class="aichat-nav-mobile-inner">
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/">首页</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+        </li>
+          <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+        </li>
+    </div>
+</ul>
+<style>.aichat-footer {
+    margin-top: -490px;
+}
+
+@media screen and (max-width: 1200px) {
+    .aichat-footer {
+        margin-top: 0;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: white;
+}
+
+.aichat-swiper-pagination {
+    margin-top: -30px;
+    text-align: center;
+}
+</style>
+<!-- main -->
+<main class="aichat-main aichat-limit-width">
+    <!-- section1 -->
+   <div class="warn_tips" style="">
+        <div class="warn_content">
+            <img src="__STATIC__/sy/img/warn_remind.png" alt="提示" id="warn_remind">
+            <p class="tips_content">
+            在测试演示使用PHPWorkermanChat产品期间，不得危害国家安全、泄露国家秘密，不得侵犯社会集体和公民的合法权益。
+            </p>
+            <p class="tips_content" style="padding-top:0">
+            PHPWorkermanChat产品禁止用于含有木马、病毒、色情、赌博、诈骗等违法违规业务。一经发现，PHPWorkermanChat有权立即停止服务，并协助相关行政执法机关进行清查。
+            </p>
+            <img src="__STATIC__/sy/img/close_warn_tips.png" alt="关闭" id="close_warn_tips">
+        </div>
+    </div>
+    <style>
+        .warn_tips {
+            width: 1200px;
+            position: fixed;
+            bottom: 5px;
+            z-index: 100;
+            background: #DFEDFD;
+            height: 72px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            opacity: 0.9;
+        }
+        
+        .warn_content {
+            position: relative;
+        }
+        
+        img#warn_remind {
+            position: absolute;
+            width: 18px;
+            left: 35px;
+            top: 17px;
+        }
+        
+        p.tips_content {
+            width: 1088px;
+            margin: auto;
+            line-height: 21px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-size: 14px;
+            color: #000;
+            font-weight: 500;
+            padding-top: 16px;
+            box-sizing: border-box;
+        }
+        
+        img#close_warn_tips {
+            right: 9px;
+            position: absolute;
+            width: 18px;
+            top: 8px;
+            cursor: pointer;
+        }
+    </style>
+    <!--  轮播图开始  -->
+    <div class="swiper-container swiper-container-horizontal" id="home-top-slide">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-active">
+                <div style="width: 100vw;">
+                    <section class="aichat-section aichat-section-banner aichat-translate">
+                        <div class="aichat-section-inner">
+                            <div class="aichat-section-banner-title">
+                                <span class="highlight-text-home">PHP</span>客服 全<span class="highlight-text-home">智</span>全能
+                            </div>
+                            <div class="aichat-section-banner-des aichat-auxiliary-word">
+                                融合AI智能客服与传统人工客服需求<br>助力企业完成互联网转型升级！
+                            </div>
+                            <div class="aichat-btn aichat-btn_primary aichat-section-banner-btn">
+                                <a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="swiper-slide swiper-slide-next">
+                <div class="slide-second">
+                    <div class="slide-second-main">
+                        <div class="slide-second-mountain"></div>
+                        <div class="slide-second-illustration">
+                            <div class="slide-second-man"></div>
+                            <div class="slide-second-woman"></div>
+                            <div class="slide-second-chatbox"></div>
+                            <div class="slide-second-flower1"></div>
+                            <div class="slide-second-flower2"></div>
+                            <div class="slide-second-tree"></div>
+                            <div class="slide-second-fish"></div>
+                        </div>
+                        <div class="slide-second-wrapper">
+                            <div class="slide-second-wrapper-text">通过实时聊天提升客户满意度</div>
+                            <div style="height: 20px"></div>
+                            <div class="aichat-btn aichat-btn_primary aichat-section-banner-btn"><a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-third" style="width: 100vw;">
+                    <div class="slide-third-main">
+                        <div class="slide-third-mountain"></div>
+                        <div class="slide-third-flower2"></div>
+                        <div class="slide-third-tree"></div>
+                        <div class="slide-third-illustration">
+                            <div class="slide-third-bg"></div>
+                            <div class="slide-third-man"></div>
+                            <div class="slide-third-board"></div>
+                            <div class="slide-third-flower1"></div>
+                            <div class="slide-third-laptop"></div>
+                            <div class="slide-third-squirrel"></div>
+                            <div class="slide-third-plugwire"></div>
+                            <div class="slide-third-wire"></div>
+                        </div>
+                        <div class="slide-third-wrapper">
+                            <div class="slide-third-wrapper-text">使用我们的聊天机器人给客户更优质的体验</div>
+                            <!--                            <div class="slide-third-wrapper" style="height: 50px"></div>-->
+                            <div class="aichat-btn aichat-btn_primary aichat-section-banner-btn"><a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 分页器 -->
+        <div class="swiper-pagination home-top-swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
+        <!-- 导航按钮 -->
+        <div class="swiper-button-prev home-top-swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false">
+
+        </div>
+        <div class="swiper-button-next home-top-swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false">
+
+        </div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+    <!-- section2 -->
+    <section class="aichat-section aichat-section2 aichat-translate">
+        <div class="aichat-section2-inner aichat-section-inner">
+            <!-- section-title -->
+            <div class="aichat-section-title">
+                让咨询更简单 让服务有温度 
+            </div>
+
+            <!-- tabs -->
+            <div class="aichat-section-tabs">
+                <div class="aichat-section-tab active">
+                    <img src="__STATIC__/sy/img/1.svg" class="aichat-section-tab-icon aichat-tab-icon-default">
+                    <img src="__STATIC__/sy/img/1-a.svg" class="aichat-section-tab-icon aichat-tab-icon-active">
+                    <span>产品介绍</span>
+                </div>
+                <div class="aichat-section-tab">
+                    <img src="__STATIC__/sy/img/2.svg" class="aichat-section-tab-icon aichat-tab-icon-default">
+                    <img src="__STATIC__/sy/img/2-a.svg" class="aichat-section-tab-icon aichat-tab-icon-active">
+                    <span>特色功能</span>
+                </div>
+                <div class="aichat-section-tab">
+                    <img src="__STATIC__/sy/img/3.svg" class="aichat-section-tab-icon aichat-tab-icon-default">
+                    <img src="__STATIC__/sy/img/3-a.svg" class="aichat-section-tab-icon aichat-tab-icon-active">
+                    <span>解决方案</span>
+                </div>
+            </div>
+
+            <!-- panels-产品介绍 -->
+            <div class="aichat-panels js-tab-content active">
+                <!-- aichat-panel -->
+                <div class="aichat-panel aichat-panel1 aichat-module">
+                    <div class="aichat-panel-digest">
+                        <div class="aichat-panel-title">PHPWorkermanChat</div>
+                        <div class="aichat-panel-desc">
+                            快速接入网站，APP，公众号，电商，抖音等渠道
+                        </div>
+                        <div class="aichat-panel-digest-title">
+                            多渠道统一接入，实现一体化管理
+                        </div>
+                        <div class="aichat-panel-digest-desc">
+                            将任何对话窗口转换为商业入口,让企业的服务触角延伸到各个互联网角落
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                • 获得更多销售线索，提高销售业绩
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 支持图文、文字、图片、网址、小程序卡片、语音等多种类型的回复
+                            </div>
+                        </div>
+                        <div class="aichat-panel-btns">
+                            <div class="aichat-btn aichat-btn_primary aichat-panel-btn">
+                                <a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                            <div class="aichat-btn aichat-panel-btn">了解详情</div>
+                        </div>
+                    </div>
+                    <img src="__STATIC__/sy/img/4.svg" class="aichat-panel-placeholder">
+                </div>
+                <!-- aichat-panel -->
+                <div class="aichat-panel aichat-panel2 aichat-module">
+                    <div class="aichat-panel-digest">
+                        <div class="aichat-panel-title"></div>
+                        <div class="aichat-panel-desc">H5网页云客服</div>
+                        <div class="aichat-panel-digest-title">
+                            多场景客服服务 生成链接快速咨询
+                        </div>
+                        <div class="aichat-panel-digest-desc">
+                            私域流量精准引导入口
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                • 无门槛快速生成渠道客服链接
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 快速完成问题咨询与客服解答
+                            </div>
+                        </div>
+                        <div class="aichat-panel-btns">
+                            <div class="aichat-btn aichat-btn_primary aichat-panel-btn">
+                                <a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                            <div class="aichat-btn aichat-panel-btn">了解详情</div>
+                        </div>
+                    </div>
+                    <img src="__STATIC__/sy/img/5.svg" class="aichat-panel-placeholder">
+                </div>
+                <!-- aichat-panel -->
+                <div class="aichat-panel aichat-panel3 aichat-module">
+                    <div class="aichat-panel-digest">
+                        <div class="aichat-panel-title">NLP翻译系统</div>
+                        <div class="aichat-panel-desc">
+                            基于NLP神经网络的实时聊天翻译
+                        </div>
+                        <div class="aichat-panel-digest-title">
+                            将您的聊天内容翻译成几十种语言
+                        </div>
+                        <div class="aichat-panel-digest-desc">
+                            完全结合PHPWorkermanChat，对话如母语般流畅
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                • 聚焦外贸出海行业解决方案、打通语言障碍
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 解决海外本地化需求
+                            </div>
+                        </div>
+                        <div class="aichat-panel-btns">
+                            <div class="aichat-btn aichat-btn_primary aichat-panel-btn">
+                                <a class="aichat-link" href="/index/index/translation.html">立即体验</a>
+                            </div>
+                            <div class="aichat-btn aichat-panel-btn">了解详情</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- aichat-panel -->
+                <div class="aichat-panel aichat-panel4 aichat-module">
+                    <div class="aichat-panel-digest">
+                        <div class="aichat-panel-title">AI客服机器人</div>
+                        <div class="aichat-panel-desc">
+                            人机协作，事半功倍，节省60%-80%企业人工成本
+                        </div>
+                        <div class="aichat-panel-digest-title">
+                            7*24小时高效服务智能辅助人工
+                        </div>
+                        <div class="aichat-panel-digest-desc">
+                            回复准确率达97%节省60%-80%人力成本
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                • 语义理解，真正实现让机器理解语言，而非传统关键词检索，全面的回答用户问题
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 猜你想问，智能引导用户点击获得想要的答案
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 多渠道接入机器人，支持H5、公众号、小程序等多个渠道
+                            </div>
+                        </div>
+                        <div class="aichat-panel-btns">
+                            <div class="aichat-btn aichat-btn_primary aichat-panel-btn">
+                                <a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                            <div class="aichat-btn aichat-panel-btn">了解详情</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- aichat-panel -->
+                <div class="aichat-panel aichat-panel5 aichat-module">
+                    <div class="aichat-panel-digest">
+                        <div class="aichat-panel-title">工单系统</div>
+                        <div class="aichat-panel-desc">
+                            提高客服的工作效率，加强客服内部之间的沟通
+                        </div>
+                        <div class="aichat-panel-digest-title">
+                            将客服工作标准可视化，提供标准管理方式
+                        </div>
+                        <div class="aichat-panel-digest-desc">
+                            多方式创建工单，快速解决客户问题
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                • 工单中心、客服聊天页面都可以发起工单，灵活固定问题
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                • 实时跟踪工单动态进度
+                            </div>
+                        </div>
+                        <div class="aichat-panel-btns">
+                            <div class="aichat-btn aichat-btn_primary aichat-panel-btn">
+                                <a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                            <div class="aichat-btn aichat-panel-btn"><a class="aichat-link" href="/seller/login/index">立即体验</a>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="__STATIC__/sy/img/6.svg" class="aichat-panel-placeholder">
+                </div>
+            </div>
+
+            <!-- panels-特色功能 -->
+            <div class="aichat-module aichat-special js-tab-content">
+                <div class="aichat-special-item aichat-panel aichat-special-item1">
+                    <p>专业配置</p>
+                    <p>让客服融入企业系统</p>
+                </div>
+                <div class="aichat-special-bd">
+                    <div class="aichat-special-item aichat-panel aichat-panel_column aichat-special-item2">
+                        <div class="aichat-panel-digest aichat-panel-digest1">
+                            <div class="aichat-panel-digest-title">开放接口<br>实现企业自行定制高端的访客端的体验。</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">企业系统需要获取或推送数据时，可以使用本系统中丰富的开放接口进行对接</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">客户资料同步接口、统一登录接口等，助力对接企业原有系统</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-digest aichat-panel-digest2">
+                            <div class="aichat-panel-digest-title">多维度统计客服数据<br>信息一目了然</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">提供丰富指标对客服工作量、工作质量、评价概览进行全方位统计，客服工作效率一目了然</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">给管理员管理普通客服带来便利</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="aichat-special-item aichat-panel aichat-panel_column aichat-special-item3">
+                        <div class="aichat-panel-digest aichat-panel-digest3">
+                            <div class="aichat-panel-digest-title">对话内容多样化<br>让你的沟通效率提升100%</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">除常见的文字图片外，PHPWorkermanChat还支持实时语音对话，大幅提高沟通效率</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">多图文、微信素材等公众号独享的自动回复类型</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-digest aichat-panel-digest4">
+                            <div class="aichat-panel-digest-title">移动办公<br>随时随地服务客户</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">客服可随时随地用手机客服端与客户进行对话沟通，让服务营销工作更灵活不受限，提高企业效益。</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">及时推送，不漏消息，智能分配，人性服务</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- panels-解决方案 -->
+            <div class="aichat-module aichat-solution js-tab-content">
+                <div class="aichat-solution-title">专业为各行各业提供合理的解决方案</div>
+
+                <div class="aichat-panel aichat-solution-item">
+                    <div class="aichat-solution-item-l">
+                        <img src="__STATIC__/sy/img/1.jpeg" class="aichat-solution-item-banner active">
+                        <img src="__STATIC__/sy/img/2.jpeg" class="aichat-solution-item-banner">
+                        <img src="__STATIC__/sy/img/3.jpeg" class="aichat-solution-item-banner">
+                        <img src="__STATIC__/sy/img/4.jpeg" class="aichat-solution-item-banner">
+                        <div class="aichat-solution-item-nav">
+                            <div class="aichat-solution-nav-item active">
+                                <img src="__STATIC__/sy/img/1%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-default">
+                                <img src="__STATIC__/sy/img/1-a%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-active">
+                                <span class="aichat-solution-nav-text">教育行业</span>
+                            </div>
+                            <div class="aichat-solution-nav-item">
+                                <img src="__STATIC__/sy/img/2%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-default">
+                                <img src="__STATIC__/sy/img/2-a%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-active">
+                                <span class="aichat-solution-nav-text">电商平台</span>
+                            </div>
+                            <div class="aichat-solution-nav-item">
+                                <img src="__STATIC__/sy/img/3%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-default">
+                                <img src="__STATIC__/sy/img/3-a%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-active">
+                                <span class="aichat-solution-nav-text">企业服务</span>
+                            </div>
+                            <div class="aichat-solution-nav-item">
+                                <img src="__STATIC__/sy/img/4%281%29.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-default">
+                                <img src="__STATIC__/sy/img/4-a.svg" class="aichat-solution-nav-icon aichat-solution-nav-icon-active">
+                                <span class="aichat-solution-nav-text">游戏娱乐</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aichat-solution-item-r">
+                        <div class=" aichat-panel-digest active">
+                            <div class="aichat-panel-digest-title">教育行业解决方案</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">学员咨询量大，怕遗漏消息，可关注公众号接收消息提醒推送，实时了解学员的咨询</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">学员咨询的内容各有不同，可对学员的会话进行分类，方便多维度统计、分析学员需求</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-config active">
+                            <div class="aichat-panel-config-title">专业为您配置以下功能：</div>
+                            <div class="aichat-panel-config-list">
+                                <div class="aichat-panel-config-item">消息提醒</div>
+                                <div class="aichat-panel-config-item">会话分类</div>
+                                <div class="aichat-panel-config-item">标签管理</div>
+                                <div class="aichat-panel-config-item">自动回复</div>
+                                <div class="aichat-panel-config-item">客服消息推送</div>
+                                <div class="aichat-panel-config-item">模板消息推送</div>
+                                <div class="aichat-panel-config-item">延时回复</div>
+                                <div class="aichat-panel-config-item">同事会话</div>
+                                <div class="aichat-panel-config-item">快捷回复</div>
+                                <div class="aichat-panel-config-item">统计</div>
+                            </div>
+                        </div>
+
+                        <div class=" aichat-panel-digest">
+                            <div class="aichat-panel-digest-title">电商平台解决方案</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">客服协同，统计各项指标提升个性化服务体验</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">自定义商品模板、自定义客户名片模板</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-config">
+                            <div class="aichat-panel-config-title">专业为您配置以下功能：</div>
+                            <div class="aichat-panel-config-list">
+                                <div class="aichat-panel-config-item">客服插件</div>
+                                <div class="aichat-panel-config-item">客服中心</div>
+                                <div class="aichat-panel-config-item">自动回复</div>
+                                <div class="aichat-panel-config-item">场景设置</div>
+                                <div class="aichat-panel-config-item">场景客服</div>
+                                <div class="aichat-panel-config-item">快捷方式</div>
+                                <div class="aichat-panel-config-item">统计</div>
+                                <div class="aichat-panel-config-item">图文模板</div>
+                            </div>
+                        </div>
+
+                        <div class=" aichat-panel-digest">
+                            <div class="aichat-panel-digest-title">企业服务行业解决方案</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">空闲分配、轮流分配、补齐分配、按权重分配，分配方式多样化，解决客服众多、分配难的问题</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">企业客服众多，管理系统难度大，使用角色分级赋予部分客服子管理权限，让管理员轻松管理团队</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-config">
+                            <div class="aichat-panel-config-title">专业为您配置以下功能：</div>
+                            <div class="aichat-panel-config-list">
+                                <div class="aichat-panel-config-item">客服中心</div>
+                                <div class="aichat-panel-config-item">角色管理</div>
+                                <div class="aichat-panel-config-item">自动回复</div>
+                                <div class="aichat-panel-config-item">快捷回复</div>
+                                <div class="aichat-panel-config-item">客服接待设置</div>
+                                <div class="aichat-panel-config-item">客服消息推送</div>
+                                <div class="aichat-panel-config-item">同事会话</div>
+                                <div class="aichat-panel-config-item">快捷回复</div>
+                                <div class="aichat-panel-config-item">H5云客服</div>
+                                <div class="aichat-panel-config-item">统计</div>
+                            </div>
+                        </div>
+
+                        <div class=" aichat-panel-digest">
+                            <div class="aichat-panel-digest-title">游戏娱乐行业解决方案</div>
+                            <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">玩家咨询时间不定，客服面临不能及时回复的问题。使用客服小程序，随时随地回复客户消息</span>
+                                </div>
+                                <div class="aichat-panel-digest-item">
+                                    <img src="__STATIC__/sy/img/7.svg" class="aichat-panel-digest-item-icon">
+                                    <span class="aichat-panel-digest-item-text">玩家转化率低，分等级服务难，可对VIP用户进行打标签，明确用户分类，定向解决玩家问题</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aichat-panel-config">
+                            <div class="aichat-panel-config-title">专业为您配置以下功能：</div>
+                            <div class="aichat-panel-config-list">
+                                <div class="aichat-panel-config-item">标签管理</div>
+                                <div class="aichat-panel-config-item">关键词回复</div>
+                                <div class="aichat-panel-config-item">自动回复</div>
+                                <div class="aichat-panel-config-item">客服消息推送</div>
+                                <div class="aichat-panel-config-item">模板消息推送</div>
+                                <div class="aichat-panel-config-item">广告位展示</div>
+                                <div class="aichat-panel-config-item">快捷回复</div>
+                                <div class="aichat-panel-config-item">统计</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section9 -->
+    <section class="aichat-section aichat-section9">
+        <div class="aichat-section-inner">
+            <div class="aichat-panels">
+                <div class="aichat-panel aichat-module">
+                    <div class="aichat-panel-r aichat-panel-digest">
+                        <img src="__STATIC__/sy/img/1-i.svg" class="aichat-panel-digest-icon">
+                        <div class="aichat-panel-digest-title">
+                            移动端语音、服务号消息推送提醒
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">粉丝消息通过服务号模板消息推送给客服</span>
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">随时随地查看客服消息</span>
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">离线后收到粉丝消息通过语音提醒来提醒客服</span>
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">自由设置推送时间，避免打扰</span>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="__STATIC__/sy/img/1%282%29.svg" class="aichat-panel-placeholder">
+                </div>
+                <div class="aichat-panel aichat-module aichat-panel-2">
+                    <img src="__STATIC__/sy/img/2%282%29.svg" class="aichat-panel-placeholder">
+                    <div class="aichat-panel-r aichat-panel-digest">
+                        <img src="__STATIC__/sy/img/2-i.svg" class="aichat-panel-digest-icon">
+                        <div class="aichat-panel-digest-title">
+                            多维度统计客服数据，为多客服管理提供支持
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">提供丰富指标对客服工作量、工作质量、评价概览进行全方位统计，客服工作效率一目了然</span>
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">实时监控，客服服务全面掌控</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aichat-panel aichat-module">
+                    <div class="aichat-panel-r aichat-panel-digest">
+                        <img src="__STATIC__/sy/img/3-i.svg" class="aichat-panel-digest-icon">
+                        <div class="aichat-panel-digest-title">
+                            开放接口，方便对接企业原有系统
+                        </div>
+                        <div class="aichat-panel-digest-des aichat-auxiliary-word">
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">企业系统需要对获取或推送数据时，可使用本系统中丰富的开放接口进行对接</span>
+                            </div>
+                            <div class="aichat-panel-digest-item">
+                                <img src="__STATIC__/sy/img/4%282%29.svg" class="aichat-panel-digest-item-icon">
+                                <span class="aichat-panel-digest-item-text">客户资料同步接口、统一登录接口等，助力对接企业原有系统</span>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="__STATIC__/sy/img/3%282%29.svg" class="aichat-panel-placeholder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-bg">
+        <div class="section-bg-inner">
+            <!-- section10 -->
+            <section class="aichat-section aichat-section10 aichat-module">
+                <div class="aichat-section-inner">
+                    <!-- aichat-justify -->
+                    <div class="aichat-justify">
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/1%283%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">满意度评价</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/2%283%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">客服数据统计</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/3%283%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">智能分配客服</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/4%283%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">客服分组</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/5%281%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">关键字转人工</div>
+                        </div>
+                        <!-- </div>
+                    <div class="aichat-justify"> -->
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/6%281%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">客服协同</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/7%281%29.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">会话分类</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/8.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">客服转接</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/9.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">指定客服</div>
+                        </div>
+                        <div class="aichat-justify-item">
+                            <img src="__STATIC__/sy/img/10.svg" class="aichat-justify-item-icon">
+                            <div class="aichat-justify-item-text">延误转接</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- section11 -->
+            <section class="aichat-section aichat-section11">
+                <div class="aichat-section-inner">
+                    <!-- section-title -->
+                    <div class="aichat-section-title">
+                        <span class="aichat-section-title-mark">PHPWorkermanChat</span> 助力小程序及公众号运营数据全面提升！
+                    </div>
+
+                    <!-- aichat-businesses-box -->
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<div class="guidefull hide">
+</div>
+<script src="__STATIC__/sy/js/push.js"></script>
+<script async="" charset="utf-8" src="__STATIC__/sy/js/loader.js"></script>
+
+<script src="__STATIC__/sy/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    if (0 == 1) {
+        $('.couponedFull').removeClass('hide')
+    }
+    $('.couponedFull .couponedFullclose img').click(() => {
+        $('.couponedFull').addClass('hide')
+    })
+    $('.couponedFull .couponedFullbutton').click(() => {
+        window.location.href = '/user/login'
+    })
+
+
+    $(function () {
+        // 初始化动效
+        var wow = new WOW({
+            boxClass: 'wow',
+            animateClass: 'animated',
+            offset: 50,
+            mobile: false,
+            live: true
+        });
+        wow.init();
+        setTimeout(function(){
+            // var mySwiper = new Swiper(".swiper-container", {
+            //     autoplay: 5000, //可选选项，自动滑动
+            //     // direction: "vertical", // 方向
+            //     // pagination: ".aichat-swiper-pagination",
+            //     pagination: {
+            //         el: '.aichat-swiper-pagination',
+            //     },
+            // });
+            
+        },50)
+
+        $('.aichat-section-tab').click(function (e) {
+            var index = $(this).index()
+
+            $(this).parents('section').find('.js-tab-content').removeClass('active').eq(index).addClass('active')
+            $(this).parents('.aichat-section-tabs').find('.aichat-section-tab').removeClass('active').eq(index).addClass('active')
+        })
+
+        $('.aichat-solution-item-nav .aichat-solution-nav-item').click(function () {
+            var index = $(this).index()
+            $(this).addClass('active').siblings('.aichat-solution-nav-item').removeClass('active')
+            $('.aichat-solution-item-l .aichat-solution-item-banner').removeClass('active').eq(index).addClass('active')
+            $('.aichat-solution-item-r .aichat-panel-digest').removeClass('active').eq(index).addClass('active')
+            $('.aichat-solution-item-r .aichat-panel-config').removeClass('active').eq(index).addClass('active')
+        })
+
+        var scrollOffset = $(window).scrollTop()
+        var screenHeight = $(window).height() - 120
+        var isScrollFinish = false
+
+        // section过渡
+        $(window).scroll(function () {
+            var scrollTop = $(window).scrollTop()
+            if (Math.abs(scrollTop - scrollOffset) < 50) return
+
+            scrollOffset = scrollTop
+            handleTranslate()
+        })
+
+        function handleTranslate() {
+            var elArr = $('.aichat-section:not(.aichat-translate)')
+            isScrollFinish = !!elArr.length
+
+            if (!isScrollFinish) return
+            console.log(isScrollFinish);
+
+            elArr.each(function () {
+                if ($(this).offset().top < scrollOffset + screenHeight) {
+                    console.log(scrollOffset, $(this).attr('class'));
+
+                    $(this).addClass('aichat-translate')
+                }
+            })
+        }
+
+        handleTranslate()
+    })
+    $(document).on('click', '#close_warn_tips', function() {
+        $(".warn_tips").hide();
+    })
+</script>
+
+<!-- aichat-back-to-top -->
+<img src="__STATIC__/sy/img/2%284%29.svg" class="aichat-back-to-top" style="display: none;">
+
+<!-- footer -->
+<footer class="aichat-footer aichat-limit-width">
+    <div class="aichat-footer-bd aichat-module">
+        <div class="aichat-company-info">
+            <img src="__STATIC__/sy/img/logo.png" class="aichat-footer-logo">
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">客服微信：</span>
+                <span class="aichat-company-info-item-value">AS123456789</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">联系邮箱：</span>
+                <span class="aichat-company-info-item-value">123456789@qq.com</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">投诉邮箱：</span>
+                <span class="aichat-company-info-item-value">admin@hao123.com</span>
+            </p>
+        </div>
+        <div class="aichat-company-wechat">
+            <img src="__STATIC__/sy/img/qrcode_430.jpeg" class="aichat-company-wechat-qr">
+            <div class="aichat-company-wechat-text">扫码关注官网</div>
+        </div>
+    </div>
+
+    <div class="aichat-footer-ft">
+        <!-- nav -->
+        <ul class="aichat-footer-nav">
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">关于PHPWorkermanChat</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助中心</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">服务条款</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助文档</a>
+            </li>
+
+        </ul>
+
+        <!-- copyright -->
+        <mark class="aichat-copyright">Copyright © 贝拓网络 All Rights Reserved 仅供开发测试 <a href="https://beian.miit.gov.cn/" target="_blank" class="aichat-icp">京ICP备0602007579号</a>
+        </mark>
+
+    </div>
+
+</footer>
+<script src="__STATIC__/sy/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery.cookie.min.js" crossorigin="anonymous"></script>
+<script src="__STATIC__/sy/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/common.js"></script>
+<script src="__STATIC__/sy/js/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/wow.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/home.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery-8b229831f4.min.js"></script>
+<style>img{vertical-align: middle;}#minblzxmsgtitlecontainer{background-color#0682ff!important;}</style>
+<script>
+function showKf(){
+    $("#_aichat_chat_iframe,._aichat_chat_iframe").toggle();
+    $("._aichat_chat_button_list").toggleClass("_aichat_chat_button_active");
+}
+</script>
+<script src="__STATIC__/sy/js/slide.js"></script>
+<script src="/index/index/chatBoxJs/u/64acfab52e15b"></script>
+<script>ServiceChat.init();</script>
+</body>
+</html>

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>在线客服系统_全渠道智能客服_AI智能客服_PHPWorkermanChat</title>
+    <meta name="keywords" content="网上客服系统,在线客服系统,智能客服,云客服系统,在线客服平台,IM客服软件,多渠道统一智能客服,全渠道客服系统">
+    <meta name="description" content="AI智能在线客服系统,支持网页、微信、微博、APP、邮件等全渠道覆盖接入。主动营销服务：专注线上转化。数据报表:种类繁多，细致全面，拥有300多种，为量化客服管理提供支持。30万+家企业用户正在使用AI智能客服提供的在线客服系统、智能客服、云客服系统、在线客服平台、IM客服软件、云客服平台、全渠道客服系统，AI智能客服为企业在线客服团队用户提速增效、优化服务体验。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta content="email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- 版本-->
+    <link href="__STATIC__/sy/css/style.css" type="text/css" rel="stylesheet">
+
+    <link href="__STATIC__/sy/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/animate.css">
+    <link href="__STATIC__/sy/css/base.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/home.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/agent.css" type="text/css" rel="stylesheet">
+    <!-- pc 主页 -->
+    <link href="__STATIC__/sy/css/home_layout.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__STATIC__/sy/css/slide.css">
+
+    <link rel="stylesheet" href="__STATIC__/sy/css/layer.css" id="layuicss-layer">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/loader.css">
+    </head>
+<body>
+<header class="aichat-header aichat-limit-width">
+    <div class="aichat-header-bd">
+        <img src="__STATIC__/sy/img/logo.png">
+        <ul class="aichat-nav">
+            <li class="aichat-nav-item">
+                <a class="aichat-link" href="/">首页</a>
+            </li>
+            <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+            </li>
+            <li class="aichat-nav-item  aichat-active">
+                <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+            </li>
+             <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+
+<div class="aichat-header-ft">
+        {if empty(session('seller_user_name'))}
+        <a class="aichat-link" href="/seller/login/index">登录</a>
+        <div class="aichat-header-ft-hr"></div>
+        <a class="aichat-link" href="/seller/login/reg">免费试用</a>
+           {else}
+        <a class="aichat-link" href="/seller/index">进入工作台</a>
+        {/if}
+    </div>
+</header>
+<header class="aichat-header-mobile ">
+    <a href="/index/index.html"><img src="__STATIC__/sy/img/logo.png" class="aichat-logo"></a>
+    <div id="nav-icon2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+<ul class="aichat-nav-mobile">
+    <div class="aichat-nav-mobile-inner">
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/">首页</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+        </li>
+          <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+        </li>
+    </div>
+</ul>
+<style>.aichat-footer {
+    margin-top: -490px;
+}
+
+@media screen and (max-width: 1200px) {
+    .aichat-footer {
+        margin-top: 0;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: white;
+}
+
+.aichat-swiper-pagination {
+    margin-top: -30px;
+    text-align: center;
+}
+</style>
+
+
+    <link rel="stylesheet" href="__STATIC__/sy/css/aichat.css">
+    <link rel="stylesheet" href="__STATIC__/sy/css/common.min.css">
+    <link rel="stylesheet" href="__STATIC__/sy/css/pricing.min.css">
+    <style>
+        .pricing-main-plans-list-one{margin-left:15px;}
+        
+        .pricing-main-plans-list-one.first{margin-left:0;}
+    </style>
+    <div id="body" data-page="pricing">
+        <div class="pricing-main body-main">
+            <div class="body-wrapper">
+                <div class="pricing-main-wrapper">
+                    <div class="pricing-main-master-wrapper">
+                        <h1 class="pricing-main-title body-main-title font-sans-light">选择适合您的套餐</h1>
+                    </div>
+                    <div class="pricing-main-moon"></div>
+                    <div class="pricing-main-plans">
+                        <ul class="pricing-main-plans-list">
+                            <li data-name="basic" class="pricing-main-plans-list-one first">
+                                    <div class="pricing-main-plans-list-one-wrapped"><span class="pricing-main-plans-list-one-name font-sans-light">体验</span>
+                                        <div class="pricing-main-plans-list-one-illustration">
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-itself">
+                                            </div>
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-animation">
+                                                <img src="__STATIC__/sy/img/X1.png" style="width: 90px;">
+                                            </div>
+                                        </div><span class="pricing-main-plans-list-one-price"><span class="pricing-main-plans-list-one-price-wrapper"><span class="pricing-main-plans-list-one-price-amount font-sans-regular">0￥</span></span><span class="clear"></span>
+                                            <span class="pricing-main-plans-list-one-price-extra font-sans-medium">3天</span><span class="clear"></span><span class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">注册即可免费测试3日                                                <div data-direction="bottom" data-align="center" class="tooltip">
+                                                    <div class="tooltip-value">注册即可免费测试3日</div>
+                                                </div></span></span>
+                                        <span class="pricing-main-plans-list-one-features">适合所有人</span><span class="pricing-main-plans-list-one-bottom"><a href="/seller/login/index" data-name="basic" class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a></span>
+                                    </div>
+                                </li>
+                                                            <li data-name="basic" class="pricing-main-plans-list-one ">
+                                    <div class="pricing-main-plans-list-one-wrapped"><span class="pricing-main-plans-list-one-name font-sans-light">月套餐</span>
+                                        <div class="pricing-main-plans-list-one-illustration">
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-itself">
+                                            </div>
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-animation">
+                                                <img src="__STATIC__/sy/img/X2.png" style="width: 90px;">
+                                            </div>
+                                        </div><span class="pricing-main-plans-list-one-price"><span class="pricing-main-plans-list-one-price-wrapper"><span class="pricing-main-plans-list-one-price-amount font-sans-regular">50￥</span></span><span class="clear"></span>
+                                            <span class="pricing-main-plans-list-one-price-extra font-sans-medium">一个月</span><span class="clear"></span><span class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">5个坐席及五个分组                                                <div data-direction="bottom" data-align="center" class="tooltip">
+                                                    <div class="tooltip-value">一个月时长</div>
+                                                </div></span></span>
+                                        <span class="pricing-main-plans-list-one-features">适合中小型企业满足售前售后，拥有机器人功能，全场景需求</span><span class="pricing-main-plans-list-one-bottom"><a href="/seller/login/index" data-name="basic" class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a></span>
+                                    </div>
+                                </li>
+                                                            <li data-name="basic" class="pricing-main-plans-list-one ">
+                                    <div class="pricing-main-plans-list-one-wrapped"><span class="pricing-main-plans-list-one-name font-sans-light">季套餐</span>
+                                        <div class="pricing-main-plans-list-one-illustration">
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-itself">
+                                            </div>
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-animation">
+                                                <img src="__STATIC__/sy/img/X3.png" style="width: 90px;">
+                                            </div>
+                                        </div><span class="pricing-main-plans-list-one-price"><span class="pricing-main-plans-list-one-price-wrapper"><span class="pricing-main-plans-list-one-price-amount font-sans-regular">120￥</span></span><span class="clear"></span>
+                                            <span class="pricing-main-plans-list-one-price-extra font-sans-medium">三个月</span><span class="clear"></span><span class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">10个坐席及客服分组                                                <div data-direction="bottom" data-align="center" class="tooltip">
+                                                    <div class="tooltip-value">三个月时长</div>
+                                                </div></span></span>
+                                        <span class="pricing-main-plans-list-one-features">适合中大型企业，提供高并发专业服务</span><span class="pricing-main-plans-list-one-bottom"><a href="/seller/login/index" data-name="basic" class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a></span>
+                                    </div>
+                                </li>
+                                                            <li data-name="basic" class="pricing-main-plans-list-one ">
+                                    <div class="pricing-main-plans-list-one-wrapped"><span class="pricing-main-plans-list-one-name font-sans-light">年套餐</span>
+                                        <div class="pricing-main-plans-list-one-illustration">
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-itself">
+                                            </div>
+                                            <div data-type="basic" class="pricing-main-plans-list-one-illustration-animation">
+                                                <img src="__STATIC__/sy/img/X4.png" style="width: 90px;">
+                                            </div>
+                                        </div><span class="pricing-main-plans-list-one-price"><span class="pricing-main-plans-list-one-price-wrapper"><span class="pricing-main-plans-list-one-price-amount font-sans-regular">300￥</span></span><span class="clear"></span>
+                                            <span class="pricing-main-plans-list-one-price-extra font-sans-medium">一年</span><span class="clear"></span><span class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">无限坐席无限分组                                                <div data-direction="bottom" data-align="center" class="tooltip">
+                                                    <div class="tooltip-value">无限坐席无限分组</div>
+                                                </div></span></span>
+                                        <span class="pricing-main-plans-list-one-features">适合中大型企业，提供高并发专业服务</span><span class="pricing-main-plans-list-one-bottom"><a href="/seller/login/index" data-name="basic" class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a></span>
+                                    </div>
+                                </li>
+                            <!--<li data-name="pro"-->
+                            <!--    class="pricing-main-plans-list-one pricing-main-plans-list-one-is-popular">-->
+                            <!--    <div class="pricing-main-plans-list-one-wrapped"><span-->
+                            <!--            class="pricing-main-plans-list-one-name font-sans-light">专业版</span>-->
+                            <!--        <div class="pricing-main-plans-list-one-illustration">-->
+                            <!--            <div data-type="pro" class="pricing-main-plans-list-one-illustration-itself">-->
+                            <!--            </div>-->
+                            <!--            <div data-type="pro" class="pricing-main-plans-list-one-illustration-animation">-->
+                            <!--                <img src="/static/index1/image/price/X2.png" style="width: 90px;">-->
+                            <!--            </div>-->
+                            <!--        </div><span class="pricing-main-plans-list-one-price"><span-->
+                            <!--                class="pricing-main-plans-list-one-price-wrapper"><span-->
+                            <!--                    data-has-currency="true"-->
+                            <!--                    class="pricing-main-plans-list-one-price-amount font-sans-regular"-->
+                            <!--                    data-currency="￥">2300</span></span>-->
+                            <!--            <span class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-extra font-sans-medium">每座席每年</span><span-->
+                            <!--                class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">3坐席起8折-->
+                            <!--                <div data-direction="bottom" data-align="center" class="tooltip">-->
+                            <!--                    <div class="tooltip-value">可以同50个客户同时对话</div>-->
+                            <!--                </div></span></span>-->
+                            <!--        <span-->
+                            <!--            class="pricing-main-plans-list-one-features">适合中小型企业满足售前售后，拥有机器人功能，全场景需求</span><span-->
+                            <!--            class="pricing-main-plans-list-one-bottom"><a-->
+                            <!--                href="/index/index/register" data-name="pro"-->
+                            <!--                class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a><span-->
+                            <!--                class="pricing-main-plans-list-one-bottom-entice">-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--            </span></span>-->
+                            <!--    </div>-->
+                            <!--</li>-->
+                            <!--<li data-name="unlimited" class="pricing-main-plans-list-one">-->
+                            <!--    <div class="pricing-main-plans-list-one-wrapped"><span-->
+                            <!--            class="pricing-main-plans-list-one-name font-sans-light">专业版</span>-->
+                            <!--        <div class="pricing-main-plans-list-one-illustration">-->
+                            <!--            <div data-type="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-illustration-itself"></div>-->
+                            <!--            <div data-type="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-illustration-animation">-->
+                            <!--                <img src="/static/index1/image/price/X3.png" style="width: 90px;">-->
+                            <!--            </div>-->
+                            <!--        </div><span class="pricing-main-plans-list-one-price"><span-->
+                            <!--                class="pricing-main-plans-list-one-price-wrapper"><span-->
+                            <!--                    data-has-currency="true"-->
+                            <!--                    class="pricing-main-plans-list-one-price-amount font-sans-regular"-->
+                            <!--                    data-currency="￥">4500</span></span>-->
+                            <!--            <span class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-extra font-sans-medium">每坐席每年</span><span-->
+                            <!--                class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">3坐席起8折-->
+                            <!--                <div data-direction="bottom" data-align="center" class="tooltip">-->
+                            <!--                    <div class="tooltip-value">可以同100个客户同时对话</div>-->
+                            <!--                </div></span></span>-->
+                            <!--        <span class="pricing-main-plans-list-one-features">适合中大型企业，提供高并发专业服务</span><span-->
+                            <!--            class="pricing-main-plans-list-one-bottom"><a-->
+                            <!--                href="/index/index/register" data-name="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a><span-->
+                            <!--                class="pricing-main-plans-list-one-bottom-entice">-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--            </span></span>-->
+                            <!--    </div>-->
+                            <!--</li>-->
+                            <!--<li data-name="null" class="pricing-main-plans-list-one">-->
+                            <!--    <div class="pricing-main-plans-list-one-wrapped"><span-->
+                            <!--            class="pricing-main-plans-list-one-name font-sans-light">集团版</span>-->
+                            <!--        <div class="pricing-main-plans-list-one-illustration">-->
+                            <!--            <div data-type="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-illustration-itself"></div>-->
+                            <!--            <div data-type="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-illustration-animation">-->
+                            <!--                <img src="/static/index1/image/price/X4.png" style="width: 90px;">-->
+                            <!--            </div>-->
+                            <!--        </div><span class="pricing-main-plans-list-one-price"><span-->
+                            <!--                class="pricing-main-plans-list-one-price-wrapper"><span-->
+                            <!--                    data-has-currency="true"-->
+                            <!--                    class="pricing-main-plans-list-one-price-amount font-sans-regular"-->
+                            <!--                    data-currency>联系客服</span></span>-->
+                            <!--            <span class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-extra font-sans-medium">整体报价</span><span-->
+                            <!--                class="clear"></span><span-->
+                            <!--                class="pricing-main-plans-list-one-price-seats font-sans-light dashed has-tooltip">按需求定制-->
+                            <!--                <div data-direction="bottom" data-align="center" class="tooltip">-->
+                            <!--                    <div class="tooltip-value">无限制</div>-->
+                            <!--                </div></span></span>-->
+                            <!--        <span-->
+                            <!--            class="pricing-main-plans-list-one-features">适合复杂的集团化业务，提供高并发，定制化专业服务</span><span-->
+                            <!--            class="pricing-main-plans-list-one-bottom"><a-->
+                            <!--                href="/index/index/register" data-name="unlimited"-->
+                            <!--                class="pricing-main-plans-list-one-bottom-select body-button font-sans-medium">开始接入</a><span-->
+                            <!--                class="pricing-main-plans-list-one-bottom-entice">-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--                <div-->
+                            <!--                    class="pricing-main-plans-list-one-bottom-entice-one font-sans-regular">-->
+                            <!--                </div>-->
+                            <!--            </span></span>-->
+                            <!--    </div>-->
+                            <!--</li>-->
+                            <span class="clear"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>.pricing-details-features-plan-name{display:none !important; }</style>
+        <div class="body-secondary">
+            <div class="pricing-details body-main"><span id="details" class="pricing-common-path-mock"></span>
+                <div class="body-wrapper">
+                    <h2 class="pricing-details-title body-main-title font-sans-medium">多样的功能</h2>
+                    <div class="pricing-details-features">
+                        <div class="pricing-details-features-plan">
+                            <div class="pricing-details-features-plan-name">
+                                <div class="pricing-details-features-plan-name-wrapper"><span class="pricing-details-features-plan-name-from font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-plan-name-itself font-sans-medium">专业版</span>
+                                </div>
+                                <div class="pricing-details-features-plan-name-separator"></div>
+                            </div>
+                            <div class="pricing-details-features-plan-itself">
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="chatbox" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">在线对话</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                将智能客服添加到您的应用后，即可进行互动对话,专业版每座席可同时进行15个客户对话</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="inbox" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">团队协作</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">
+                                                    专业版</span></div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                支持通过团队客服服务客户.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="mobile" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">多渠道接入</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版仅支持基于WEB/APP的渠道接入。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="notify" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">应用上限</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan">
+                                                <span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版提供最高2个不同应用接入</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="unlimited-history" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">永久保存</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                拥有“无限历史记录”可让您访问以前的销售线索以及对话，您可以自主选择保存多久</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="triggers" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">智能引导</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                可通过多种自定义设置，引导客户对话，提供转化效率</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="notes" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">内部对话</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                扩大客户支持需要团队合作。使用内部对话互相交谈。您还可以使用@提及您的同事。然后将通知他。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="customization" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">自定义UI</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                我们允许自定义对话窗口造型，实现完美贴合您业务的对话窗口.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="search" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">内部搜寻</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                内部搜索为您的团队提供客户筛选方式，可帮助他们立即找到目前需要的客户。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="block" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">拉黑</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                提供细粒度封禁方式，杜绝
+                                                垃圾对话</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="reminders" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">聊天提醒</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                人总有忘事的时候，机器不会，对遗漏客户进行提醒对话。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="user-ratings" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">用户评价</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                让您的客户可以对客服对话进行评价，您可以自定义评价内容
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-details-features-plan">
+                            <div class="pricing-details-features-plan-name">
+                                <div class="pricing-details-features-plan-name-wrapper"><span class="pricing-details-features-plan-name-from font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-plan-name-itself font-sans-medium">专业版(包含专业版全部功能)</span>
+                                </div>
+                                <div class="pricing-details-features-plan-name-separator"></div>
+                            </div>
+                            <div class="pricing-details-features-plan-itself">
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="chatbox" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">同时对话上限</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版每坐席可同时进行50个对话</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="mobile" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">多渠道接入</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版支持基于WEB/APP以及独立链接对话的渠道接入。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="shortcuts" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">智能翻译</div>
+                                    </a>
+                                    <div data-plan="pro" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                基于NLP神经网络的智能翻译引擎，让您可以如母语般和其他国家的客户对话💡</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="routing" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">内部转接</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                可将已接待客户转接给团队内其他同事</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="debranding" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">去除版权商标</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                去除智能客服窗口的底部版权商标.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="bot" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">客服机器人</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                一个成熟的聊天机器人。可以创建的复杂对话流，帮您解决85%的基础对话。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="notify" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">应用上限</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan">
+                                                <span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版提供最高10个不同应用接入</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="auto-responder" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">自动回复</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                可创建多种条件触发的自动回复，主动引导客户</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="analytics" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">数据分析</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="pro" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                获取您的对话分析数据，客户满意度，数据报表等。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="reminders" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">多渠道推送</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                开放全部推送Webhook api</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="mobile" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">多渠道接入</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版支持全部渠道接入，并开放api对接。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="status" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">可用性监测</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                基于谛听监测(Zmonitor)全球节点进行的可用性监测，7*24小时监控您的业务可用性.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-details-features-plan" style="display:none;">
+                            <div class="pricing-details-features-plan-name">
+                                <div class="pricing-details-features-plan-name-wrapper"><span class="pricing-details-features-plan-name-from font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-plan-name-itself font-sans-medium">专业版(包含专业版全部功能)</span>
+                                </div>
+                                <div class="pricing-details-features-plan-name-separator"></div>
+                            </div>
+                            <div class="pricing-details-features-plan-itself">
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="chatbox" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">同时对话上限</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                旗舰版每坐席可同时进行100个对话</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="status" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">可用性监测</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                基于谛听监测(Zmonitor)全球节点进行的可用性监测，7*24小时监控您的业务可用性.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="#" data-disabled-soft="true" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="notify" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">应用上限</div>
+                                    </a>
+                                    <div data-plan="basic" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan">
+                                                <span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular">
+                                                </span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="basic" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                专业版提供最高20个不同应用接入</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="magicbrowse" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">远程协助(BEAT)</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                基于网页的远程协助，让您可以在没有任何客户端软件的情况下远程协助客户进行操作.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="livetranslate" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">深度翻译</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                当您的业务需要更高精度的对话时，我们提供基于行业词的机器学习深度翻译.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="crm" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">CRM</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                智能客服用户系统使您可以管理所有用户和潜在客户信息。从对话，社交平台，公司信息，电话号码，聚合管理。此外，您不必按每位用户付费，无论您有多少联系人，价格都保持不变。
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="video-chat" class="pricing-details-features-one-icon-itself">
+                                            </div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">视频通话(BEAT)</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                基于WEB的视频通话，客户不需要安装任何程序即可和客服发起视频对话，极大增加可信度</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing-details-features-one">
+                                    <a href="/index/index/register" data-disabled-soft="false" class="pricing-details-features-one-link">
+                                        <div class="pricing-details-features-one-icon">
+                                            <div data-id="sms" class="pricing-details-features-one-icon-itself"></div>
+                                        </div>
+                                        <div class="pricing-details-features-one-name">短信营销</div>
+                                    </a>
+                                    <div data-plan="unlimited" class="pricing-details-features-one-badge"></div>
+                                    <div class="pricing-details-features-one-tooltip">
+                                        <div class="pricing-details-features-one-tooltip-arrow"></div>
+                                        <div class="pricing-details-features-one-tooltip-content">
+                                            <div class="pricing-details-features-one-tooltip-content-plan"><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span class="pricing-details-features-one-tooltip-content-plan-text font-sans-regular"></span><span data-plan="unlimited" class="pricing-details-features-one-tooltip-content-plan-text font-sans-bold">专业版</span>
+                                            </div>
+                                            <div class="pricing-details-features-one-tooltip-content-separator"></div>
+                                            <div class="pricing-details-features-one-tooltip-content-explain">
+                                                可通过短信进行客户回访，营销推送等，增强客户粘性</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <footer class="aichat-footer aichat-limit-width">
+    <div class="aichat-footer-bd aichat-module">
+        <div class="aichat-company-info">
+            <img src="__STATIC__/sy/img/logo2.png" class="aichat-footer-logo">
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">客服微信：</span>
+                <span class="aichat-company-info-item-value">AS123456789</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">联系邮箱：</span>
+                <span class="aichat-company-info-item-value">123456789@qq.com</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">投诉邮箱：</span>
+                <span class="aichat-company-info-item-value">admin@hao123.com</span>
+            </p>
+        </div>
+        <div class="aichat-company-wechat">
+            <img src="__STATIC__/sy/img/qrcode_430.jpeg" class="aichat-company-wechat-qr">
+            <div class="aichat-company-wechat-text">扫码关注官网</div>
+        </div>
+    </div>
+
+    <div class="aichat-footer-ft">
+        <!-- nav -->
+        <ul class="aichat-footer-nav">
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">关于PHPWorkermanChat</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助中心</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">服务条款</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助文档</a>
+            </li>
+
+        </ul>
+
+        <!-- copyright -->
+        <mark class="aichat-copyright">Copyright © PHPWorkermanChat All Rights Reserved 仅供开发测试 <a href="https://beian.miit.gov.cn/" target="_blank" class="aichat-icp">京ICP备0602007579号</a>
+        </mark>
+
+    </div>
+
+</footer>
+
+<script src="__STATIC__/sy/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery.cookie.min.js" crossorigin="anonymous"></script>
+<script src="__STATIC__/sy/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/common.js"></script>
+<script src="__STATIC__/sy/js/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/wow.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/home.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery-8b229831f4.min.js"></script>
+<style>img{vertical-align: middle;}#minblzxmsgtitlecontainer{background-color#0682ff!important;}</style>
+
+<script>
+function showKf(){
+    $("#_aichat_chat_iframe,._aichat_chat_iframe").toggle();
+    $("._aichat_chat_button_list").toggleClass("_aichat_chat_button_active");
+}
+</script>
+</body>
+</html>

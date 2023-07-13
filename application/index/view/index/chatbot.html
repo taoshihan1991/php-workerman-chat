@@ -1,0 +1,278 @@
+<!DOCTYPE html><!-- saved from url=(0023)https://www.aichat.net/ --><!-- This web page is copied by "https://bazhan.wang" --><html><head><meta charset="utf-8">
+    
+    <title>在线客服系统_全渠道智能客服_AI智能客服_PHPWorkermanChat</title>
+    <meta name="keywords" content="智能客服,客服系统,客服机器人,AI客服,在线客服系统,公众号客服系统,H5客服,小程序客服系统,外贸客服系统,在线客服系统,智能客服系统,网站客服系统,客服软件,微信客服系统">
+    <meta name="description" content="智能客服是国内领先的新一代SaaS在线智能AI客服系统,拥有多家集团企业接入,为企业提供一套集网站在线客服系统、网站在线客服软件、在线客户服务系统为一体的完整的多渠道客户服务软件解决方案.智能客服系统支持多渠道接入,为企业发掘更多潜在客户,降低运行成本,提高客服工作效率.欢迎免费试用!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta content="email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- 版本-->
+    <link href="__STATIC__/sy/css/style.css" type="text/css" rel="stylesheet">
+
+    <link href="__STATIC__/sy/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/animate.css">
+    <link href="__STATIC__/sy/css/base.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/home.css" type="text/css" rel="stylesheet">
+    <link href="__STATIC__/sy/css/agent.css" type="text/css" rel="stylesheet">
+    <!-- pc 主页 -->
+    <link href="__STATIC__/sy/css/home_layout.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__STATIC__/sy/css/slide.css">
+
+    <link rel="stylesheet" href="__STATIC__/sy/css/layer.css" id="layuicss-layer">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/sy/css/loader.css">
+    </head>
+<body>
+<header class="aichat-header aichat-limit-width">
+    <div class="aichat-header-bd">
+        <img src="__STATIC__/sy/img/logo.png" class="aichat-logo">
+        <ul class="aichat-nav">
+            <li class="aichat-nav-item">
+                <a class="aichat-link" href="/">首页</a>
+            </li>
+            <li class="aichat-nav-item  aichat-active">
+                <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+            </li>
+            <li class="aichat-nav-item ">
+                <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+            </li>
+             <li class="aichat-nav-item">
+                <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+     <div class="aichat-header-ft">
+        {if empty(session('seller_user_name'))}
+        <a class="aichat-link" href="/seller/login/index">登录</a>
+        <div class="aichat-header-ft-hr"></div>
+        <a class="aichat-link" href="/seller/login/reg">免费试用</a>
+           {else}
+        <a class="aichat-link" href="/seller/index">进入工作台</a>
+        {/if}
+    </div>
+</header>
+<header class="aichat-header-mobile ">
+    <a href="/index/index.html"><img src="__STATIC__/sy/img/logo.png" class="aichat-logo"></a>
+    <div id="nav-icon2">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+<ul class="aichat-nav-mobile">
+    <div class="aichat-nav-mobile-inner">
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/">首页</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/chatbot.html">机器人客服</a>
+        </li>
+        <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/price.html">产品价格</a>
+        </li>
+          <li class="aichat-nav-item-mobile">
+            <a class="aichat-link" href="/index/index/ranslation.html">联系我们</a>
+        </li>
+    </div>
+</ul>
+<style>.aichat-footer {
+    margin-top: -490px;
+}
+
+@media screen and (max-width: 1200px) {
+    .aichat-footer {
+        margin-top: 0;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: white;
+}
+
+.aichat-swiper-pagination {
+    margin-top: -30px;
+    text-align: center;
+}
+</style>
+    <link rel="stylesheet" href="__STATIC__/sy/css/chatbot.css" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/sy/css/common.css" type="text/css">
+    <div id="body" data-page="chatbot">
+        <div class="chatbot-main body-main">
+            <div class="chatbot-main-illustration-ground"></div>
+            <div class="body-wrapper">
+                <div class="chatbot-main-illustration-bigbg"></div>
+                <div class="chatbot-main-illustration-flowers2"></div>
+                <div class="chatbot-main-illustration-tree"></div>
+                <div class="chatbot-main-illustration">
+                    <div class="chatbot-main-illustration-bg"></div>
+                    <div class="chatbot-main-illustration-man"></div>
+                    <div class="chatbot-main-illustration-board"></div>
+                    <div class="chatbot-main-illustration-flowers"></div>
+                    <div class="chatbot-main-illustration-laptop"></div>
+                    <div class="chatbot-main-illustration-squirrel"></div>
+                    <div class="chatbot-main-illustration-plugwire"></div>
+                    <div class="chatbot-main-illustration-wire"></div>
+                </div>
+                <div class="chatbot-main-wrapper"><span class="chatbot-main-section font-sans-regular">客服AI机器人</span>
+                    <h1 class="chatbot-main-title font-sans-light">使用智能客服机器人
+                        带来优质客户体验</h1>
+                    <div class="body-form"><a href="/seller/login/index" class="body-form-button font-sans-medium">立即开始使用</a><span class="body-form-entice font-sans-regular">三日免费</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="body-secondary">
+            <div class="chatbot-app body-main">
+                <div class="body-wrapper">
+                    <h2 class="chatbot-app-text font-sans-bold">为什么需要AI客服机器人？</h2>
+                    <div class="chatbot-app-explain font-sans-light">7x24小时全天候热情服务,
+                        高标准接待水平，5星级客户体验，根据我们的数据显示，接入客服机器人的商家，人力成本节省85%
+                        服务效率提升95%，也就是说，仅靠机器人客服就可以解决绝大部分同类对话，让企业宝贵的人工资源投入到最高价值的对话中。</div>
+                </div>
+                <div class="chatbot-app-illustration">
+                    <div class="chatbot-app-illustration-sun"></div>
+                    <div class="chatbot-app-illustration-plane"></div>
+                    <div class="chatbot-app-illustration-mountains">
+                        <div class="chatbot-app-illustration-mountain-1"></div>
+                        <div class="chatbot-app-illustration-mountain-2"></div>
+                        <div class="chatbot-app-illustration-mountain-3"></div>
+                    </div>
+                    <div class="chatbot-app-illustration-app"></div>
+                    <div class="chatbot-app-illustration-person-1"></div>
+                    <div class="chatbot-app-illustration-person-2"></div>
+                    <div class="chatbot-app-illustration-trees">
+                        <div class="chatbot-app-illustration-tree"></div>
+                        <div class="chatbot-app-illustration-tree"></div>
+                    </div>
+                    <div class="chatbot-app-illustration-flower-1"></div>
+                    <div class="chatbot-app-illustration-flower-2"></div>
+                    <div class="chatbot-app-illustration-flower-3"></div>
+                    <div class="chatbot-app-illustration-flower-4"></div>
+                    <div class="chatbot-app-illustration-flower-5"></div>
+                    <div class="chatbot-app-illustration-blanket"></div>
+                </div>
+            </div>
+            <div class="chatbot-bg-wrapper">
+                <div class="chatbot-scenario body-main">
+                    <div class="body-wrapper">
+                        <div class="chatbot-scenario-content">
+                            <div class="chatbot-scenario-content-text">
+                                <h2 class="chatbot-scenario-content-text-title font-sans-bold">高效辅助人工客服</h2>
+                                <p class="chatbot-scenario-content-text-content font-sans-light">
+                                    多种接待模式，灵活自定义转接规则，与人工完美协同，问题关键词快速匹配答案，人工效率提升 95%.</p><a href="/index/index/register" target="/index/index/register" class="features-button font-sans-bold">查看更多</a>
+                            </div>
+                            <div class="chatbot-scenario-content-illustrate">
+                                <div class="chatbot-scenario-content-illustrate-main"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><span class="clear"></span>
+            </div>
+            <div class="chatbot-multichannel body-main">
+                <div class="body-wrapper">
+                    <div class="chatbot-multichannel-content">
+                        <div class="chatbot-multichannel-content-text">
+                            <h2 class="chatbot-multichannel-content-text-title font-sans-bold">智能设置提前解决问题</h2>
+                            <p class="chatbot-multichannel-content-text-content font-sans-light">
+                                预置知识库覆盖常规对话资料，专属行业知识，开放式对话问答录入，
+                                支持批量管理，让机器人持续学习，专业应答</p><a href="/index/index/register" target="_blank" class="features-button font-sans-bold">查看更多</a>
+                        </div>
+                        <div class="chatbot-multichannel-content-illustrate">
+                            <div class="chatbot-multichannel-content-illustrate-main"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><span class="clear"></span>
+            <div class="chatbot-mostout body-main">
+                <div class="body-wrapper">
+                    <div class="chatbot-mostout-content">
+                        <div class="chatbot-mostout-content-text">
+                            <h2 class="chatbot-mostout-content-text-title font-sans-bold">将我们的客服BOT深度接入您的程序</h2>
+                            <p class="chatbot-mostout-content-text-content font-sans-light">
+                                对于集团版客户，我们提供资源丰富的API，实现企业自行定制高端的访客端的体验，您可以将客服bot接入您的APP/游戏中</p><a href="/index/index/register" target="_blank" class="features-button font-sans-bold">查看更多</a>
+                        </div>
+                        <div class="chatbot-mostout-content-illustrate">
+                            <div class="chatbot-mostout-content-illustrate-main"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><span class="clear"></span>
+        </div>
+    </div>
+   
+ <footer class="aichat-footer aichat-limit-width">
+    <div class="aichat-footer-bd aichat-module">
+        <div class="aichat-company-info">
+            <img src="__STATIC__/sy/img/logo2.png" class="aichat-footer-logo">
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">客服微信：</span>
+                <span class="aichat-company-info-item-value">AS123456789</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">联系邮箱：</span>
+                <span class="aichat-company-info-item-value">123456789@qq.com</span>
+            </p>
+            <p class="aichat-company-info-item">
+                <span class="aichat-company-info-item-label">投诉邮箱：</span>
+                <span class="aichat-company-info-item-value">admin@hao123.com</span>
+            </p>
+        </div>
+        <div class="aichat-company-wechat">
+            <img src="__STATIC__/sy/img/qrcode_430.jpeg" class="aichat-company-wechat-qr">
+            <div class="aichat-company-wechat-text">扫码关注官网</div>
+        </div>
+    </div>
+
+    <div class="aichat-footer-ft">
+        <!-- nav -->
+        <ul class="aichat-footer-nav">
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">关于PHPWorkermanChat</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助中心</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">服务条款</a>
+            </li>
+            <li class="aichat-footer-nav-item">
+                <a class="aichat-link" href="/#">帮助文档</a>
+            </li>
+
+        </ul>
+
+        <!-- copyright -->
+        <mark class="aichat-copyright">Copyright © PHPWorkermanChat All Rights Reserved 仅供开发测试 <a href="https://beian.miit.gov.cn/" target="_blank" class="aichat-icp">京ICP备0602007579号</a>
+        </mark>
+
+    </div>
+
+</footer>
+<script src="__STATIC__/sy/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery.cookie.min.js" crossorigin="anonymous"></script>
+<script src="__STATIC__/sy/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/common.js"></script>
+<script src="__STATIC__/sy/js/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/wow.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/home.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/sy/js/jquery-8b229831f4.min.js"></script>
+<style>img{vertical-align: middle;}#minblzxmsgtitlecontainer{background-color#0682ff!important;}</style>
+
+<script>
+function showKf(){
+    $("#_aichat_chat_iframe,._aichat_chat_iframe").toggle();
+    $("._aichat_chat_button_list").toggleClass("_aichat_chat_button_active");
+}
+</script>
+</body>
+</html>

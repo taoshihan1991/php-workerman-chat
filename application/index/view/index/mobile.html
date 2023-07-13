@@ -1,0 +1,129 @@
+;!function(win, doc) {
+    "use strict";
+
+    var config = {
+        domain: "{$domain}",
+        uid: 'TEST-UID',
+        uName: 'TEST-UNAME',
+        avatar: 'TEST-AVATAR'
+    }
+
+    , ws_ck_div
+
+    , ws_chat_div
+
+    , ck_style = "position:fixed;z-index:201902151030;right:20px;bottom:50px;padding:0;"
+        + "margin:0;width:100px;height:40px;background:#1E9FFF;border-radius:100px;"
+        + "line-height:40px;text-align:center;color:#fff;font-size:13px;cursor:pointer;"
+
+    , chat_style = "margin:0 0;height:100%;width:100%;position:fixed;z-index:19891014;top:0;left:0;"
+
+    , hide_style= "display:none"
+
+    , show_style = "display:block"
+
+    , ServiceChat = function () {
+        this.v = '2.0';
+    }
+
+    , setCustomer = function (customer) {
+
+        localStorage.setItem('uid', customer.uid);
+        localStorage.setItem('uName', customer.uName);
+        localStorage.setItem('avatar', customer.avatar);
+    }
+
+    , getCustomer = function () {
+
+        return {
+            uid: localStorage.getItem('uid'),
+            uName: localStorage.getItem('uName'),
+            avatar: localStorage.getItem('avatar')
+        };
+    }
+
+    , showChat = function () {
+
+        doc.getElementById("WS-SHOW-CHAT").onclick = function () {
+            ws_ck_div.setAttribute("style", ck_style + hide_style);
+            ws_chat_div.setAttribute("style", chat_style + show_style);
+            doc.getElementById("parentIframe").contentWindow.postMessage(JSON.stringify({cmd: 'open_chat'}), '{$domain}');
+        };
+    }
+
+    , createBox = function () {
+
+        ws_ck_div = document.createElement("div");
+        ws_ck_div.setAttribute("style", ck_style);
+        ws_ck_div.setAttribute("id", "WS-SHOW-CHAT");
+        var text = document.createTextNode("咨询客服");
+        ws_ck_div.appendChild(text);
+        doc.body.appendChild(ws_ck_div);
+
+        ws_chat_div = document.createElement("div");
+        ws_chat_div.setAttribute("style", chat_style + hide_style);
+        doc.body.appendChild(ws_chat_div);
+
+        var ws_iframe = document.createElement("iframe");
+        ws_iframe.scrolling = "no";
+
+        ws_iframe.setAttribute("frameborder", "0", 0);
+        ws_iframe.setAttribute("id", "parentIframe");
+        ws_iframe.setAttribute("width", "100%");
+        ws_iframe.setAttribute("height", "100%");
+
+        ws_iframe.src = config.domain + "/index/index/clibox/u/{$seller}/t/{$time}/tk/{$token}";
+        ws_chat_div.appendChild(ws_iframe);
+
+        showChat();
+    }
+
+    , hideChatDiv = function () {
+
+        ws_ck_div.setAttribute("style", ck_style + show_style);
+        ws_chat_div.setAttribute("style", chat_style + hide_style);
+    };
+
+    win.onload = function() {
+        doc.getElementById("parentIframe").contentWindow.postMessage(JSON.stringify({cmd: 'c_info', data: getCustomer()}), '*');
+    };
+
+    win.addEventListener('message', function(event){
+        if('hide_chat' == event.data) {
+            hideChatDiv();
+        } else if('show_chat' == event.data) {
+            doc.getElementById("WS-SHOW-CHAT").click();
+        }
+    }, false);
+
+    ServiceChat.prototype.init = function (conf) {
+        for(var key in conf){
+            if(config.hasOwnProperty(key) === true){
+                config[key] = conf[key];
+            }
+        }
+
+        var customerInfo = getCustomer();
+        if(customerInfo.uid == null) {
+            if(config.uid == 'TEST-UID') {
+                config.uid = Number(Math.random().toString().substr(3, 8) + Date.now()).toString(36);
+            }
+
+            if(config.uName == 'TEST-UNAME') {
+                config.uName = '访客' + config.uid;
+            }
+
+            if(config.avatar == 'TEST-AVATAR') {
+                config.avatar = '{$domain}/static/common/images/customer.png';
+            }
+
+            setCustomer(config);
+        }
+
+        createBox();
+    };
+
+
+    win.ServiceChat = new ServiceChat();
+
+}(window, document);
