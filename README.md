@@ -2,17 +2,21 @@
 
 基于ThinkPHP5 + workerman，整体架构比较老，PHP客服端以及界面等需要在php-fpm下运行，即时通讯websocket服务端需要命令行执行。
 
-## web服务配置文件
+## 配置文件
 
+### web服务
 配置文件地址在，项目路径/config/database.php
 
-## websocket服务配置文件
+### websocket服务
 
 配置文件地址在，项目路径/websocket/config.php
 
-## websocket服务启动
+## 服务启动
+
+### websocket服务
 
 windows系统 进入项目路径/websocket，双击start_for_win.bat
+
 linux系统 进入项目路径/websocket，执行php start.php start
 
 ## 特别声明
