@@ -52,8 +52,23 @@
     <div class="layui-row chat-body" {if $type == 2 && $os == 'p'}style="width:70%"{/if}>
         
         <div class="chat-box">
-            
-<div class="clearfloat "><div class="author-name"><small class="chat-date">2023-04-09 12:23:33</small></div><div class="left"><div class="chat-avatars"><img src="__STATIC__/common/images/kefu.png"></div><div class="chat-message complete-read" data-msg-id="1467"><?php if(isset($hello_word)){echo $hello_word; }?></div></div></div>
+   
+{if isset($hello_word)}
+<div class="clearfloat ">
+	<div class="author-name">
+		<small class="chat-date">2023-04-09 12:23:33</small>
+	</div>
+	<div class="left">
+			<div class="chat-avatars">
+				<img src="__STATIC__/common/images/kefu.png">
+			</div>
+			<div class="chat-message complete-read" data-msg-id="1467"><?php if(isset($hello_word)){echo $hello_word; }?>
+			</div>
+	</div>
+</div>
+{/if}
+
+
         </div>
         <div style="text-align:center;">
   <small class="chat-date">客服在线时间:早上9点--晚上11点</small>
