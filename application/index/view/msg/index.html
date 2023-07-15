@@ -8,9 +8,19 @@
 </head>
 <body style="background-color: #f2f2f2">
 <div>
-    <div style="height: 30px;width: 100%;"><i class="layui-icon" style="font-size: 25px;float: right;cursor: pointer" id="closeBtn">&#x1006;</i></div>
-    <blockquote class="layui-elem-quote" style="background: #fff;border-left:5px solid #1E9FFF;">客服暂时不在，请您留言</blockquote>
-    <form class="layui-form layui-form-pane"  style="padding-left: 10px;padding-right: 10px;">
+    <div style="    
+	background: #1972f5;
+    color: #fff;
+    display: flex;
+    height: 45px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;">
+	
+	<div style="margin-left: 10px;">请您留言</div>
+	<i class="layui-icon" style="font-size: 20px;cursor: pointer;margin-right: 10px;" id="closeBtn">&#x1006;</i></div>
+    <form class="layui-form layui-form-pane"  style="padding-left: 10px;padding-right: 10px;margin-top: 20px;">
         <input type="hidden" name="seller_code" value="{$seller_code}"/>
         <div class="layui-form-item">
             <label class="layui-form-label">联系人</label>
