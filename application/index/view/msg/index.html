@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多商户客服留言</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
+</head>
+<body style="background-color: #f2f2f2">
+<div>
+    <div style="height: 30px;width: 100%;"><i class="layui-icon" style="font-size: 25px;float: right;cursor: pointer" id="closeBtn">&#x1006;</i></div>
+    <blockquote class="layui-elem-quote" style="background: #fff;border-left:5px solid #1E9FFF;">客服暂时不在，请您留言</blockquote>
+    <form class="layui-form layui-form-pane"  style="padding-left: 10px;padding-right: 10px;">
+        <input type="hidden" name="seller_code" value="{$seller_code}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" required  lay-verify="required" placeholder="请输入联系人" autocomplete="off" class="layui-input" id="name">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" required  lay-verify="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input" id="phone">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">留言内容</label>
+            <div class="layui-input-block">
+                <textarea name="content" placeholder="请输入内容" class="layui-textarea" required style="height: 150px;resize: none"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formLeave" style="background: #1E9FFF">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="__STATIC__/layui/layui.js"></script>
+<script>
+    // 留言
+    layui.use(['form', 'jquery', 'element'], function(){
+        var element = layui.element;
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        // 监听提交
+        form.on('submit(formLeave)', function(data){
+            $.post('/index/index/leaveMsg', data.field, function(res){
+
+                layer.msg(res.msg);
+                $("#name").val("");
+                $("#phone").val("");
+                $("textarea").val("");
+            });
+
+            return false;
+        });
+
+        $("#closeBtn").click(function () {
+            if (window.frames.length != parent.frames.length) {
+                window.parent.postMessage("hide_chat", '*');
+            } else {
+                window.location.href = '{$back_url}';
+            }
+        });
+    });
+</script>
+</body>
+</html>
