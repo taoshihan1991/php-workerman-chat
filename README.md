@@ -49,10 +49,12 @@ linux系统 进入项目路径/websocket，执行php start.php start
 
 nginx配置以下伪静态设置，可以去除url中的index.php
 
+```
 if (!-e $request_filename) {
 	rewrite ^/(.*)$ /index.php?s=$1 last;
 	break;
 }
+```
 
 ## 后台地址
 
