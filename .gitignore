@@ -1,0 +1,7 @@
+.idea
+composer.lock
+*.log
+runtime
+*/.DS_Store
+public/uploads
+public/worduploads
