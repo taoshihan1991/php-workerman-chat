@@ -14,7 +14,7 @@ git clone https://gitee.com/taoshihan/php-workerman-chat.git
 
 全新版本演示官网
 
-[https://gofly.v1kf.com](gofly.v1kf.com)
+[https://gofly.v1kf.com](https://gofly.v1kf.com)
 
 ## 配置文件
 
