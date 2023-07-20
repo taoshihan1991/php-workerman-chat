@@ -1,5 +1,5 @@
 {
-	"name": "php-workerman-chat/PHPWorkermanChat",
+	"name": "phpkefu/PHPWorkermanChat",
 	"description": "PHPWorkermanChat，AI智能客服系统，开源PHP客服系统 ，机器人客服，workerman客服系统开发框架",
 	"type": "project",
 	"keywords": [
