@@ -5,3 +5,6 @@ runtime
 */.DS_Store
 public/uploads
 public/worduploads
+thinkphp
+vendor
+websocket/vendor

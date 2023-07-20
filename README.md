@@ -12,6 +12,10 @@
 
 git clone https://gitee.com/taoshihan/php-workerman-chat.git
 
+composer install
+
+如果有需要是否同意的操作，一路 y 到底
+
 全新版本演示官网
 
 [https://gofly.v1kf.com](https://gofly.v1kf.com)
