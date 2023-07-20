@@ -27,8 +27,8 @@
         }
     </style>
 </head>
-<body {if $type == 2 && $os == 'p'}style="background:#ffffff"{/if}>
-<div class="chat-container" id="app" {if $type == 2 && $os == 'p'}style="position:relative;top: 50px;width: 768px;height:600px;margin:0 auto;box-shadow: 0 0 24px 0 rgb(15 66 76 / 25%); "{/if}>
+<body {if $type == 2 && $os == 'p'}style="background:#ffffff;height:100vh;display: flex;justify-content: center;align-items: center;"{/if}>
+<div class="chat-container" id="app" {if $type == 2 && $os == 'p'}style="width: 768px;height:600px;box-shadow: 0 0 24px 0 rgb(15 66 76 / 25%); "{/if}>
     <div class="layui-row chat-header" style="background: {$style['box_color']}">
         <div class="{if $type == 2 && $os == 'p'}layui-col-xs1{else/}layui-col-xs2{/if} chat-header-avatar">
             {if $type == 2 && $os == 'm'}<i class="layui-icon layui-icon-left chat-back" id="goBack"></i>{/if}
@@ -71,7 +71,7 @@
 
         </div>
         <div style="text-align:center;">
-  <small class="chat-date">客服在线时间:早上9点--晚上11点</small>
+  
 </div>
 
     </div>
