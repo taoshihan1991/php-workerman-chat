@@ -33,9 +33,18 @@ MySQL数据库创建数据库名称，字符集选utf8mb4
 ### web服务
 配置文件地址在，项目路径/config/database.php，配置MySQL链接信息
 
+配置文件地址在，项目路径/config/service.php，配置websocket地址
+
+	// socket server
+	'socket' => '127.0.0.1:2020',
+
+云服务器安全组放行端口2020，宝塔后台安全放行端口2020
+
 ### websocket服务
 
 配置文件地址在，项目路径/websocket/config.php，配置MySQL链接信息
+
+配置PHP禁用函数，删掉禁用函数pcntl_*系列的所有函数
 
 ## 服务启动
 
