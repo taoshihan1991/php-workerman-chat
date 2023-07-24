@@ -1,0 +1,12 @@
+Workerman[start.php] start in DEBUG mode
+--------------------------------------------- WORKERMAN ----------------------------------------------
+Workerman version:4.0.4          PHP version:7.2.33
+---------------------------------------------- WORKERS -----------------------------------------------
+proto   user            worker              listen                      processes    status           
+tcp     root            wsBusinessWorker    none                        8             [OK]            
+tcp     root            wsAppGateway        websocket://0.0.0.0:2020    8             [OK]            
+tcp     root            Register            text://0.0.0.0:1238         1             [OK]            
+------------------------------------------------------------------------------------------------------
+Press Ctrl+C to stop. Start success.
+Workerman[start.php] start in DEBUG mode
+Workerman[start.php] already running

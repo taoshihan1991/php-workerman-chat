@@ -48,6 +48,7 @@ linux系统 进入项目路径/websocket，执行php start.php start
 ### 配置nginx
 
 此处参照普通PHP项目的配置方式，root路径配置到项目路径/public下
+给runtime目录赋权限0777
 
 ### 伪静态配置
 

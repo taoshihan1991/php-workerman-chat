@@ -1,7 +1,7 @@
 .idea
 composer.lock
 *.log
-runtime
+runtime/*
 */.DS_Store
 public/uploads
 public/worduploads
