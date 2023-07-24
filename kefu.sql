@@ -180,7 +180,7 @@ CREATE TABLE `v2_customer_service_log` (
   `kefu_code` varchar(32) NOT NULL DEFAULT '0' COMMENT '接待的客服标识',
   `seller_code` varchar(32) NOT NULL COMMENT '客服所属的商户标识',
   `start_time` datetime NOT NULL COMMENT '开始服务时间',
-  `end_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '结束服务时间',
+  `end_time` datetime NOT NULL COMMENT '结束服务时间',
   `protocol` varchar(5) NOT NULL DEFAULT 'ws' COMMENT '来自什么类型的连接',
   PRIMARY KEY (`service_log_id`) USING BTREE,
   KEY `user_id,client_id` (`customer_id`,`client_id`) USING BTREE,
@@ -545,7 +545,7 @@ CREATE TABLE `v2_system` (
 
 LOCK TABLES `v2_system` WRITE;
 /*!40000 ALTER TABLE `v2_system` DISABLE KEYS */;
-INSERT INTO `v2_system` VALUES (1,'<p>AI智服您身边的智能客服系统，以在线人工客服和智能机器人两大系统为基础，融合ACD（Automatic Call Distribution）技术和大数据分析，为各行业企业提供云端和系统自建的应用产品，以及整体在线营销与服务解决方案。</p><p><span style=\"font-size: 14px; color: rgb(127, 127, 127);\">AI智服不得用于任何违法犯罪目的，包括非法言论、网络黄赌毒和诈骗等违法行为，一旦发现将采取关停账号并移交相关司法机构等措施！</span></p>',1,'5c6cbcb7d55ca',0,1,1,5,1,0,0),(7,'<p>测试欢迎他妈的测试成功666</p>',7,'643159f27f6df',0,0,1,0,0,0,1);
+INSERT INTO `v2_system` VALUES (1,'<p>AI智服您身边的智能客服系统，以在线人工客服和智能机器人两大系统为基础，融合ACD（Automatic Call Distribution）技术和大数据分析，为各行业企业提供云端和系统自建的应用产品，以及整体在线营销与服务解决方案。</p><p><span style=\"font-size: 14px; color: rgb(127, 127, 127);\">AI智服不得用于任何违法犯罪目的，包括非法言论、网络黄赌毒和诈骗等违法行为，一旦发现将采取关停账号并移交相关司法机构等措施！</span></p>',1,'64bdf594c2f60',0,1,1,5,1,0,0),(7,'<p>测试欢迎他妈的测试成功666</p>',7,'643159f27f6df',0,0,1,0,0,0,1);
 /*!40000 ALTER TABLE `v2_system` ENABLE KEYS */;
 UNLOCK TABLES;
 

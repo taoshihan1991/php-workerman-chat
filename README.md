@@ -12,9 +12,11 @@
 
 git clone https://gitee.com/taoshihan/php-workerman-chat.git
 
-composer install
+composer install //如果有需要是否同意的操作，一路 y 到底
 
-如果有需要是否同意的操作，一路 y 到底
+命令行进入websocket目录
+
+composer install //如果有需要是否同意的操作，一路 y 到底
 
 全新版本演示官网
 
