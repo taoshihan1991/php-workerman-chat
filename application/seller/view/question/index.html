@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>常见问题</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <blockquote class="layui-elem-quote">设置</blockquote>
+                    <form class="layui-form" action="" lay-filter="component-form-element">
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <div class="layui-col-lg6">
+                                <label class="layui-form-label">标题：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="question_title" lay-verify="required" placeholder="猜您想问：" autocomplete="off" class="layui-input" {if isset($conf['question_title'])}value="{$conf['question_title']}"{/if}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否启用：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="status" lay-skin="switch" lay-text="是|否" {if isset($conf['status']) && 1 == $conf['status']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="component-form-element">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <blockquote class="layui-elem-quote">常见问题</blockquote>
+                    <button class="layui-btn" onclick="add();">添加</button>
+                    <div class="layui-collapse" style="margin-top: 10px">
+                        {if !empty($question)}
+                        {foreach name="question" item="vo"}
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">{$vo['question']}</h2>
+                            <div class="layui-colla-content">
+                                {$vo['answer']}<br/>
+                                <button class="layui-btn layui-btn-danger layui-btn-xs" onclick="del({$vo['question_id']})">删除</button>
+                            </div>
+                        </div>
+                        {/foreach}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,form = layui.form;
+
+        form.on('submit(component-form-element)', function(data){
+
+            $.post("{:url('question/editConf')}", data.field, function (res) {
+
+                if(0 == res.code) {
+
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 200);
+                } else {
+
+                    layer.alert(res.msg, {
+                        'title': '设置错误',
+                        'icon': 2
+                    });
+                }
+            }, 'json');
+            return false;
+        });
+    });
+
+    function reload() {
+        window.location.reload();
+    }
+
+    function add() {
+
+        layer.open({
+            type: 2,
+            title: "添加问题",
+            content: "/seller/question/add",
+            area: ['60%', '60%']
+        });
+    }
+
+    function del(id) {
+
+        layer.confirm('您确定要删除吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function(){
+
+            $.getJSON('/seller/question/del/id/' + id, function (res) {
+                if(0 == res.code) {
+
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 200);
+                } else {
+
+                    layer.alert(res.msg, {
+                        'title': '删除错误',
+                        'icon': 2
+                    });
+                }
+            });
+
+        }, function(){
+
+        });
+    }
+</script>
+</body>
+</html>

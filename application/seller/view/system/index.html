@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>系统设置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+    <style>
+        .layui-form-label{
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">系统设置</div>
+                <div class="layui-card-body layui-row layui-col-space10 layui-form">
+                    <form class="layui-form" action="" lay-filter="component-form-element">
+                        
+                        <div class="layui-form-item">
+                            <div class="layui-col-lg10">
+                                <label class="layui-form-label">问候语：</label>
+                                <div class="layui-input-block">
+                                    <textarea class="editormd-markdown-textarea" name="hello_word" id="a_editormd" style="height: 260px;">{$system['hello_word']|raw}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">启用转接：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="relink_status" lay-skin="switch" lay-text="是|否" {if 1 == $system['relink_status']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">自动接待：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="auto_link" lay-skin="switch" lay-text="是|否" {if 1 == $system['auto_link']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">接待间隔：</label>
+                            <div class="layui-input-block form-inline" style="width: 250px">
+                                <input type="number" name="auto_link_time" class="layui-input" value="{$system['auto_link_time']}" style="width: 150px"><span style="float: right;margin-top: -30px">单位:秒</span>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">机器人接待：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="robot_open" lay-skin="switch" lay-text="开|关" {if 1 == $system['robot_open']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">咨询前输入信息：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="pre_input" lay-skin="switch" lay-text="是|否" {if 1 == $system['pre_input']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">自动备注：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="auto_remark" lay-skin="switch" lay-text="开|关" {if 1 == $system['auto_remark']}checked{/if}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="component-form-element">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script src="__STATIC__/common/js/ueditor/ueditor.config.js"></script>
+<script src="__STATIC__/common/js/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editorOption = {
+        lang: "zh-cn",
+        toolbars: [["undo", "redo", "|", "bold", "italic", "underline", "fontborder", "strikethrough", "superscript", "subscript", "removeformat", "formatmatch", "autotypeset", "blockquote", "pasteplain", "|", "forecolor", "backcolor",  "selectall", "cleardoc", "|","lineheight", "|", "customstyle", "paragraph", "fontfamily", "fontsize", "|",  "link", "unlink","|", "simpleupload", "insertimage", "emotion"]],
+        initialContent: "",
+        pageBreakTag: "_ueditor_page_break_tag_",
+        initialFrameWidth: "100%",
+        initialFrameHeight: "260",
+        initialStyle: "body{font-size:14px}",
+        autoFloatEnabled: false,
+        allowDivTransToP: true,
+        autoHeightEnabled: false,
+        charset: "utf-8",
+    };
+    var DomUe=UE.getEditor("a_editormd",editorOption)
+</script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,form = layui.form;
+
+        form.on('submit(component-form-element)', function(data){
+
+            $.post("{:url('system/index')}", data.field, function (res) {
+
+                if(0 == res.code) {
+
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 200);
+                } else {
+
+                    layer.alert(res.msg, {
+                        'title': '添加错误',
+                        'icon': 2
+                    });
+                }
+            }, 'json');
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

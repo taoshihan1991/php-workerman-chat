@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>客服管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start" placeholder="请输入" autocomplete="off" class="layui-input" value="{$start}" id="start">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end" placeholder="请输入" autocomplete="off" class="layui-input" value="{$end}" id="end">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-front-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+
+        // 监听搜索
+        form.on('submit(LAY-user-table)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+
+        var active = {
+            add: function(){
+
+            }
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/seller/ke_fu/praise",
+                cols: [
+                    [{
+                        field: "kefu_name",
+                        title: "客服名称",
+                    }, {
+                        field: "star5",
+                        title: "非常满意",
+                    }, {
+                        field: "star4",
+                        title: "满意",
+                    }, {
+                        field: "star3",
+                        title: "一般",
+                    }, {
+                        field: "star2",
+                        title: "不满意",
+                    }, {
+                        field: "star1",
+                        title: "非常不满意",
+                    }, {
+                        field: "percent",
+                        title: "满意率",
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+            });
+        });
+    }
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start'
+        });
+
+        laydate.render({
+            elem: '#end'
+        });
+    });
+</script>
+</body>
+</html>

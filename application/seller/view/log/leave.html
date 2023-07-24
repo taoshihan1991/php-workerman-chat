@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>访客留言</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline" style="width: 100%">
+                    未读数量： <span style="color: #FF5722">{$no_read}</span>
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm" style="float: right" id="read-all">全部标记为已读</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+        </div>
+        <script type="text/html" id="readTpl">
+            {{#  if(d.status == 1){ }}
+            <button class="layui-btn layui-btn-xs layui-btn-danger">未读</button>
+            {{#  } else { }}
+            <button class="layui-btn layui-btn-primary layui-btn-xs">已读</button>
+            {{#  } }}
+        </script>
+        <script type="text/html" id="table-seller-admin">
+            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>标记已读</a>
+        </script>
+    </div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+
+        // 监听搜索
+        form.on('submit(LAY-user-table)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/seller/log/leave",
+                cols: [
+                    [{
+                        field: "username",
+                        title: "留言者"
+                    }, {
+                        field: "phone",
+                        title: "联系电话"
+                    }, {
+                        field: "content",
+                        title: "消息内容",
+                    }, {
+                        field: "add_time",
+                        title: "留言时间"
+                    }, {
+                        field: "status",
+                        title: "阅读状态",
+                        templet: "#readTpl",
+                    }, {
+                        field: "update_time",
+                        title: "处理时间"
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-120",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("edit" === e.event) {
+                        $.getJSON('{:url("log/readMsg")}', {id: e.data.id}, function (res) {
+                            if (0 == res.code) {
+
+                                layer.msg(res.msg);
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 500);
+                            } else {
+                                layer.msg(res.msg);
+                            }
+                        });
+                    }
+                });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+            });
+        });
+    }
+
+    $(function () {
+        $("#read-all").click(function () {
+            $.getJSON('{:url("log/readAll")}', function (res) {
+                if (0 == res.code) {
+
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                } else {
+                    layer.msg(res.msg);
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理端首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    商户总数
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$seller_num|number_format}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    客服总数
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$kefu_num|number_format}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    累计服务人数
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font">{$service_num|number_format}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    当前服务人数
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font">{$now_service_num|number_format}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'sample']);
+</script>
+</body>
+</html>

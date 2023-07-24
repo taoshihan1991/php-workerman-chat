@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>AI智能客服</title>
+    <link href="__STATIC__/layui/css/layui.css" rel="stylesheet" type="text/css"/>
+    <link href="__STATIC__/layui/css/layui.mobile.css" rel="stylesheet"/>
+    <link href="__STATIC__/layui/css/modules/layim/mobile/layim.css" rel="stylesheet"/>
+    <link href="__STATIC__/service/css/ai_service.mobile.css" rel="stylesheet"/>
+    <style>
+        .layim-chat-text{
+            -webkit-touch-callout: all;
+            -webkit-user-select: all;
+            -moz-user-select: all;
+            -ms-user-select: all;
+            user-select: all;
+        }
+        .layui-layim-tab li.layim-this {
+            color: #3b91ff;
+        }
+        .user-header {
+            background: #3b91ff;
+        }
+        .layim-panel,.menu-box{
+            background: #ffffff;
+        }
+        .login-out {
+            width: 90%;
+            background: #FF5722;
+            margin: 50px auto;
+            border-radius: 2500px;
+        }
+        .layim-chat-mine .layim-chat-text {
+            background-color: #3b91ff;
+        }
+        .layim-chat-mine .layim-chat-text:after {
+            border-top-color: #3b91ff;
+        }
+        .layim-chat-tool span {
+            margin: 0;
+            width: 33.333%;
+            text-align: center;
+        }
+        .layim-chat-footer{
+            width: 100%;
+            left: 0;
+            right: 0;
+            height: auto;
+            padding-top: 8px;
+            border-top: 1px solid #ebeff0;
+        }
+        .layim-chat-send {
+            width: 95%;
+            margin: 0 auto 7px;
+        }
+        .layim-chat-send input{
+            height: 35px;
+        }
+        .layim-chat-send button{
+            height: 35px;
+            background-color: #3b91ff;
+        }
+        .layim-chat-tool {
+            background-color: #F2F5F7;
+            padding-top: 5px;
+        }
+</style>
+</head>
+<body>
+    <div class="layui-m-layer layui-m-layer1" style="z-index: 0">
+        <div class="layui-m-layermain">
+            <div class="layui-m-layersection">
+                <div class="layui-m-layerchild  layui-m-anim--1">
+                    <div class="layui-m-layercont">
+                        <div class="layim-panel">
+                            <div class="layim-title" style="background-color: #3b91ff;">
+                                <p id="title">{$userName}</p>
+                            </div>
+                            <div class="layui-unselect layim-content">
+                                <div class="layui-layim" id="now-chat">
+                                    <div class="layim-tab-content layui-show">
+                                        <ul class="layim-list-friend">
+                                            <li>
+                                                <h5>
+                                                    <i class="layui-icon">&#xe61a;</i>
+                                                    <span>咨询的访客</span>
+                                                </h5>
+                                                <ul class="layui-layim-list layui-show" id="chat-list">
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="layui-layim" id="prepare-chat" style="display: none">
+                                    <div class="layim-tab-content layui-show">
+                                        <ul class="layim-list-friend">
+                                            <li>
+                                                <h5>
+                                                    <i class="layui-icon">&#xe61a;</i>
+                                                    <span>待接入会话</span>
+                                                </h5>
+                                                <ul class="layui-layim-list layui-show" id="prepare-chat-list">
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="layui-layim" id="history-chat" style="display: none">
+                                    <div class="layim-tab-content layui-show">
+                                        <ul class="layim-list-friend">
+                                            <li>
+                                                <h5>
+                                                    <i class="layui-icon">&#xe61a;</i>
+                                                    <span>历史访客</span>
+                                                </h5>
+                                                <ul class="layui-layim-list layui-show" id="history-chat-list">
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="layui-layim" id="mine-info" style="display: none">
+                                    <div class="layim-tab-content layui-show">
+                                        <div class="container-home">
+                                            <div class="user-header">
+                                                <div class="user-avatar">
+                                                    <div class="avatar"></div>
+                                                    <div class="user-name">您好：{{ userName }}</div>
+                                                </div>
+                                                <div class="user-detail">
+                                                    <div>累计人数<br/><em id="t-s"></em></div>
+                                                    <div>累计好评<br/><em id="g-p"></em>%</div>
+                                                    <div>当前服务<br/><em id="n-s"></em></div>
+                                                </div>
+                                            </div>
+                                            <div class="menu-box">
+                                                <div class="login-out" id="loginOut">退  出</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="layui-unselect layui-layim-tab" id="tool-bar">
+                                    <li title="会话" class="layim-this" style="width: 24%">
+                                        <i class="layui-icon">&#xe612;</i><span>会话</span>
+                                    </li>
+                                    <li title="待接入" style="width: 24%">
+                                        <i class="layui-icon">&#xe613;</i><span>待接入</span>
+                                    </li>
+                                    <li title="历史" style="width: 24%" id="history">
+                                        <i class="layui-icon">&#xe611;</i><span>历史</span>
+                                    </li>
+                                    <li title="我" style="width: 24%" id="mine">
+                                        <i class="layui-icon">&#xe60b;</i><span>我</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 聊天框组 -->
+    <div class="layim-panel layui-m-anim-left" id="chat-boxes" style="display: none">
+        <div class="layim-title" style="background-color: #3b91ff;">
+            <p><i class="layui-icon layim-chat-back" onclick="hideBox()">&#xe603;</i> <span id="customer"></span></p>
+        </div>
+        <div class="layui-unselect layim-content" id="chat-box">
+            <div class="layim-chat layim-chat-friend">
+                <div class="layim-chat-main" id="boxes">
+
+                </div>
+                <div class="layim-chat-footer">
+                    <div class="layim-chat-send">
+                        <input type="text" autocomplete="off" id="msg" />
+                        <button class="layim-send layui-disabled" id="send">发送</button>
+                    </div>
+                    <div class="layim-chat-tool">
+                        <span class="layui-icon layim-tool-face" title="选择表情" id="up-face">&#xe60c;</span>
+                        <span class="layui-icon layim-tool-image" title="上传图片" id="up-image">&#xe60d;</span>
+                        <span class="layui-icon layim-tool-image" title="评价" id="praise">&#xe6c6;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-m-layerchild layim-layer layui-m-anim-scale">
+        <div class="layui-m-layercont" style="display:none;padding:0" id="face-box">
+
+        </div>
+    </div>
+
+    <audio src="__STATIC__/voice/default.wav" style="display: none;" id="ai_service-index-audio"></audio>
+
+    <div class="background-cover" style="display: none" id="conform">
+        <div class="notice-box">
+            <p class="notice">确定要接待此访客？</p>
+            <div class="conform">
+                <div class="btn-no" onclick='ckNo()'>取消</div>
+                <div class="btn-yes" onclick='ckYes()'>确定</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__STATIC__/common/js/jquery.min.js"></script>
+    <script src="__STATIC__/layui/layui.js"></script>
+    <script>
+        var socketUrl = '{$socket}';
+        var seller = '{$seller}';
+        var kefuUser = {
+            uid: 'KF_{$userCode}',
+            name: '{$userName}',
+            avatar: '{$userAvatar}'
+        };
+        var autoFlag = 1;
+        var autoInterval = {$system["auto_link_time"]};
+        var port = {$port};
+    </script>
+    {if $model == 1}
+    <script src="__STATIC__/common/js/socket.io.js"></script>
+    <script src="__STATIC__/common/js/ai_service.io.js"></script>
+    <script src="__STATIC__/service/js/mobile_ai_service.ser.io.js"></script>
+    {else / }
+    <script src="__STATIC__/common/js/reconnecting-websocket.min.js"></script>
+    <script src="__STATIC__/common/js/ai_service.v2.js"></script>
+    <script src="__STATIC__/service/js/mobile_ai_service.ser.v2.js"></script>
+    {/if}
+</body>
+</html>

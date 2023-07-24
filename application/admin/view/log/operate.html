@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>操作日志</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+        </div>
+    </div>
+</div>
+
+<script src="/static/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+
+        var active = {
+
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        // 监听搜索
+        form.on('submit(LAY-user-back-search)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/log/operate",
+                cols: [
+                    [{
+                        field: "log_id",
+                        title: "日志id"
+                    }, {
+                        field: "operator",
+                        title: "操作者",
+                    }, {
+                        field: "operator_ip",
+                        title: "操作者ip",
+                    }, {
+                        field: "operate_title",
+                        title: "操作方法",
+                    }, {
+                        field: "operate_desc",
+                        title: "操作描述",
+                    }, {
+                        field: "operate_time",
+                        title: "操作时间",
+                    },]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: "对不起，加载出现异常！"
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+
+                });
+        });
+    }
+</script>
+</body>
+</html>

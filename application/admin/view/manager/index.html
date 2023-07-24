@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">管理员名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="admin_name" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> 添加</button>
+            </div>
+
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="table-seller-admin">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                {{#  if(d.admin_id == '1'){ }}
+                <a class="layui-btn layui-btn-disabled layui-btn-xs"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                {{#  } else { }}
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                {{#  } }}
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/static/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+
+        var active = {
+
+            add: function(){
+                layer.open({
+                    type: 2
+                    ,title: '添加管理员'
+                    ,content: "{:url('manager/addAdmin')}"
+                    ,area: ['60%', '60%']
+                });
+            }
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        // 监听搜索
+        form.on('submit(LAY-user-back-search)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/manager/index",
+                cols: [
+                    [{
+                        field: "admin_id",
+                        title: "管理员ID"
+                    }, {
+                        field: "admin_name",
+                        title: "管理员名称",
+                    }, {
+                        field: "last_login_time",
+                        title: "上次登录时间",
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        width: 150,
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: "对不起，加载出现异常！"
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("del" === e.event) {
+
+                        layer.confirm('您确定要删除该管理员？', {
+                            title: '友情提示',
+                            icon: 3,
+                            btn: ['是的', '再想想']
+                        }, function() {
+
+                            $.getJSON('{:url("manager/delAdmin")}', {id: e.data.admin_id}, function (res) {
+
+                                if(0 == res.code) {
+
+                                    layer.msg(res.msg);
+                                    setTimeout(function () {
+                                        renderTable();
+                                    }, 300);
+                                } else {
+                                    layer.alert(res.msg);
+                                }
+                            });
+                        });
+
+                    } else if ("edit" === e.event) {
+
+                        layer.open({
+                            type: 2,
+                            title: "编辑管理员",
+                            content: "/admin/manager/editAdmin/admin_id/" + e.data.admin_id,
+                            area: ['60%', '60%']
+                        });
+                    }
+                });
+        });
+    }
+</script>
+</body>
+</html>

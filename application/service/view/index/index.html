@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI智能客服管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/service/css/ai_service.ser.v2.css">
+    <link rel="stylesheet" href="__STATIC__/common/js/jqueryToast/css/toast.style.css">
+    <style>
+        .autocomplete-suggestions { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #ebeef5; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 0 2px 12px 0 rgba(0,0,0,.1); z-index: 29891015 !important;height: 150px}
+        .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+        .autocomplete-suggestion strong {color: #FFB800!important;}
+        .autocomplete-no-suggestion { padding: 2px 5px;}
+        .autocomplete-selected { background: #F0F0F0; }
+        .autocomplete-suggestions strong { font-weight: bold; color: #000; }
+        .autocomplete-group { padding: 2px 5px; font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
+    </style>
+</head>
+<body>
+<header class="service-header">
+    <div class="service-log">
+        <img src="__STATIC__/common/images/logo.png">
+    </div>
+    <div class="service-title">AI智能客服工作台</div>
+    <div class="service-info">
+        <i class="layui-icon layui-icon-friends"></i>
+        <span class="kefu">{$userName}</span>
+        <i class="layui-icon layui-icon-speaker" style="font-size:20px;cursor: pointer;color:#ffffff" id="fix"></i>
+        <span class="login-out">退出</span>
+    </div>
+</header>
+<div class="layui-row service-content">
+    <div class="layui-col-xs1 service-menu">
+        <div class="kefu-info">
+            <img src="{$userAvatar}" />
+            <span class="status out"></span>
+            <span class="user-status">离线</span>
+            <ul class="layui-anim status-menu-box layui-anim-upbit">
+                <li class="set-status" data-event="online">
+                    <cite class="layui-icon status-online"></cite>在线</li>
+                <li class="set-status" data-event="busy">
+                    <cite class="layui-icon status-busy"></cite>忙碌
+                </li>
+                <li class="login-out">
+                    <cite class="layui-icon"></cite>退出
+                </li>
+            </ul>
+        </div>
+        <div class="now-chat active">
+            <i class="layui-icon layui-icon-dialogue"></i>
+            <span>当前会话</span>
+        </div>
+        <div class="history-chat">
+            <i class="layui-icon layui-icon-list"></i>
+            <span>历史会话</span>
+        </div>
+        <div class="pre-link">
+            <i class="layui-icon layui-icon-about"></i>
+            <span>待接入会话</span>
+        </div>
+    </div>
+
+    <div class="layui-col-xs2 visitor-list" id="visitor-list"></div>
+    <div class="layui-col-xs2 visitor-list" id="history-list" style="display: none"></div>
+    <div class="layui-col-xs2 visitor-list" id="queue-list" style="display: none"></div>
+
+    <div class="layui-col-xs6 service-chat-box">
+        <div class="chat-container">
+            <div class="layui-row chat-header" id="now-chat-box">
+                {if 1 == $system["relink_status"]}
+                <div id="reLink">
+                    <i class="layui-icon layui-icon-release"></i>
+                    <span>转接当前会话</span>
+                </div>
+                {/if}
+                <div id="closeChat">
+                    <i class="layui-icon layui-icon-close"></i>
+                    <span>关闭当前会话</span>
+                </div>
+                <div id="setChat">
+                    <i class="layui-icon layui-icon-chat"></i>
+                    <span>会话设置</span>
+                </div>
+                <div style="float: right;margin-right: 10px" id="tips">
+                    <span style="font-size: 12px;color:#3b91ff">如何发送截图？</span>
+                </div>
+            </div>
+            <div class="layui-row chat-header" id="pre-link-box" style="display: none">
+                <div id="takeCare">
+                    <i class="layui-icon layui-icon-dialogue"></i>
+                    <span>接待访客</span>
+                </div>
+            </div>
+            <div class="layui-row chat-header" id="history-list-box" style="display: none">
+
+            </div>
+            <div class="layui-row chat-body" id="chat-area"></div>
+            <div class="layui-row chat-footer">
+                <div class="text-holder">
+                    <textarea id="textarea" placeholder="请输入"></textarea>
+                </div>
+                <div class="send-bar">
+                    <div class="tool-box">
+                        <i class="layui-icon layui-icon-face-smile" id="face" title="表情"></i>
+                        <i class="layui-icon layui-icon-picture" id="image" title="图片"></i>
+                        <i class="layui-icon" style="font-size: 20px;" id="file" title="文件">&#xe61d;</i>
+                        <i class="layui-icon layui-icon-speaker" id="voice" title="语音"></i>
+                        <i class="layui-icon layui-icon-praise" id="praise" title="评价"></i>
+                        <!--<i class="layui-icon layui-icon-video" id="video" title="视频"></i>-->
+                    </div>
+                    <div class="send-btn-div">
+                        <input type="button" value="发送" class="send-input" id="sendBtn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style='position:relative;width:0;height:0'>
+        <div class="word-box" id="word-box">
+            <div style="width: 100%;height: 250px;background: #fff;overflow:auto" id="content"></div>
+        </div>
+    </div>
+    <div class="layui-col-xs3 service-bar">
+        <div class="layui-tab" style="margin: 0">
+            <ul class="layui-tab-title">
+                <li class="layui-this">用户信息</li>
+                <li>系统常用语</li>
+                <li>我的常用语</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <blockquote class="layui-elem-quote" style="height: 10px;line-height: 10px;border-left: 5px solid #3b91ff;">访问</blockquote>
+                    <div class="message" style="margin-top: 5px">
+                        <p>
+                            <label>来源：</label>
+                            <input disabled="disabled" class="message-input" value="" id="from">
+                        </p>
+                        <p>
+                            <label>访客设备：</label>
+
+                            <span id="show-os" style="color: #01AAED"></span>
+                        </p>
+                        <p>
+                            <label>设备版本：</label>
+                            <span id="show-version" style="color: #01AAED;margin-left: 20px"></span>
+                        </p>
+                        <p>
+                            <label>IP：</label>
+                            <input disabled="disabled" class="message-input" value="" id="ipAddr">
+                        </p>
+                        <p>
+                            <label>地区：</label>
+                            <input disabled="disabled" class="message-input" value="" id="address">
+                        </p>
+                    </div>
+                    <blockquote class="layui-elem-quote" style="height: 10px;line-height: 10px;border-left: 5px solid #3b91ff;">名片</blockquote>
+                    <div class="message" style="margin-top: 5px">
+                        <p>
+                            <label>名称：</label>
+                            <input class="message-input" value="" id="realName">
+                        </p>
+                        <p>
+                            <label>邮箱：</label>
+                            <input class="message-input" value="" id="email">
+                        </p>
+                        <p>
+                            <label>手机：</label>
+                            <input class="message-input" value="" id="phone">
+                        </p>
+                    </div>
+                    <blockquote class="layui-elem-quote" style="height: 10px;line-height: 10px;border-left: 5px solid #3b91ff;">备注</blockquote>
+                    <div class="message" style="margin-top: 5px">
+                        <textarea id="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                    <blockquote class="layui-elem-quote" style="height: 10px;line-height: 10px;border-left: 5px solid #3b91ff;margin-top: 10px">其他操作</blockquote>
+                    <div class="message" style="margin-top: 5px">
+                        <i class="layui-icon layui-icon-form" style="cursor: pointer" id="joinBlack"> 加入黑名单</i>
+                    </div>
+                </div>
+
+                <div class="layui-tab-item">
+                    <div class="layui-col-xs12">
+                        <div class="layui-collapse" lay-accordion>
+                            {if !empty($word)}
+                            {foreach name="word" item="vo"}
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">{$vo['cate_name']}</h2>
+                                <div class="layui-colla-content" style="padding: 0 2px">
+                                    <table class="layui-table">
+                                        <tbody>
+                                        {if !empty($vo['word'])}
+                                        {foreach name="$vo['word']" item="v"}
+                                        <tr class="word" data-content="{$v['word']}">
+                                            <td style="word-wrap:break-word;word-break:break-all;cursor: pointer">{$v['title']}</td>
+                                            <td style="cursor: pointer;color: #01AAED" data-content="{$v['word']}" onclick="sendWord(this, 1)"> 直接发送</td>
+                                            <td style="cursor: pointer;color: #01AAED" data-content="{$v['word']}" onclick="sendWord(this, 2)"> 编辑发送</td>
+                                        </tr>
+                                        {/foreach}
+                                        {/if}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {/foreach}
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-tab-item">
+                    <div class="layui-col-xs12">
+                        <button type="button" class="layui-btn layui-btn-xs" id="add-my-cate">
+                            添加分类
+                        </button>
+                        <div class="layui-collapse" lay-accordion style="margin-top: 10px" id="my-word-box">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio src="__STATIC__/voice/default.wav" style="display: none;" id="ai_service-index-audio"></audio>
+<!-- 转接提示层 -->
+<div class="layui-form" id="change-box" style="display: none">
+    <div class="layui-form-item" style="margin-top: 20px">
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title" id="change-group-title">
+
+            </ul>
+            <div class="layui-tab-content" id="relink-tab">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 转接提示层 -->
+<!-- 会话设置层 -->
+<div id="set-chat-box" style="display: none;padding-left: 20px">
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <input type="radio" name="sort" value="1" title="建立对话时间排序" id="sort-1">
+            <input type="radio" name="sort" value="2" title="访客新消息置顶" id="sort-2">
+        </div>
+        <hr/>
+        <div class="layui-form-item">
+            <input type="radio" name="offlineStatus" value="1" title="对话结束--保留" id="status-1">
+            <input type="radio" name="offlineStatus" value="2" title="对话结束--移除" id="status-2">
+        </div>
+        <div class="layui-form-item">
+            <button class="layui-btn" id="set-chat">确认修改</button>
+            <button class="layui-btn layui-btn-primary" id="clean-chat">清理结束会话</button>
+        </div>
+    </div>
+</div>
+<!-- 会话设置层 -->
+<!-- 访客正在输入 -->
+<div class="typing" id="typing-word"></div>
+<!-- 访客正在输入 -->
+<!-- 客服状态切换 -->
+<div class="contextMenu" id="myStatus">
+    <ul>
+        <li id="item_1">隐身</li>
+        <li id="item_2">在线</li>
+    </ul>
+</div>
+<!-- 客服状态切换 -->
+<!-- 撤回消息 -->
+<div class="contextMenu" id="myBack">
+    <ul>
+        <li id="item_3">撤回消息</li>
+    </ul>
+</div>
+<!-- 撤回消息 -->
+<!-- 我的常用语 -->
+<script id="myWordTpl" type="text/html">
+    {{#  layui.each(d.data, function(index, item){ }}
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title"> {{ item.cate_name }}
+            <i class="layui-icon layui-icon-edit" style="margin-left: 50px" onclick="editMyWord(this)" title="编辑" data-title="{{ item.cate_name }}" data-id="{{ item.cate_id }}"></i>
+            <i class="layui-icon layui-icon-delete" onclick="delMyWord(this)" title="删除" data-title="{{ item.cate_name }}" data-id="{{ item.cate_id }}"></i>
+            <i class="layui-icon layui-icon-add-1" onclick="addMyWord(this)" title="添加常用语" data-title="{{ item.cate_name }}" data-id="{{ item.cate_id }}"></i>
+        </h2>
+        <div class="layui-colla-content" style="padding: 0 2px">
+            <table class="layui-table">
+                <tbody>
+                {{#  layui.each(item.word, function(index2, item2){ }}
+                <tr class="word" data-content="{{ item2.word }}">
+                    <td style="word-wrap:break-word;word-break:break-all;cursor: pointer">{{ item2.title }}</td>
+                    <td style="cursor: pointer;color: #01AAED" data-content="{{ item2.word }}" onclick="sendWord(this, 1)"> 直接发送</td>
+                    <td style="cursor: pointer;color: #01AAED" data-content="{{ item2.word }}" onclick="sendWord(this, 2)"> 编辑发送</td>
+                    <td style="cursor: pointer;color: #01AAED" data-id="{{ item2.word_id }}" onclick="delWord(this)"> 删除</td>
+                </tr>
+                {{#  }); }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{#  }); }}
+</script>
+<!-- 我的常用语 -->
+
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script src="__STATIC__/common/js/jqueryToast/js/toast.script.js"></script>
+<script src="__STATIC__/common/js/jquery.contextmenu.r2.js"></script>
+<script src="__STATIC__/common/js/jquery.autocomplete.min.js"></script>
+<script src="__STATIC__/layui/layui.js"></script>
+<script>
+    var socketUrl = '{$socket}';
+    var seller = '{$seller}';
+    var kefuUser = {
+        uid: 'KF_{$userCode}',
+        name: '{$userName}',
+        avatar: '{$userAvatar}'
+    };
+    var autoFlag = {$system["auto_link"]};
+    var autoInterval = {$system["auto_link_time"]};
+    var port = {$port};
+    var preWord = {$allWord|raw};
+</script>
+{if $model == 1}
+<script src="__STATIC__/common/js/socket.io.js"></script>
+<script src="__STATIC__/common/js/ai_service.io.js"></script>
+<script src="__STATIC__/service/js/ai_service.ser.io.js"></script>
+{else / }
+<script src="__STATIC__/common/js/reconnecting-websocket.min.js"></script>
+<script src="__STATIC__/common/js/ai_service.v2.js"></script>
+<script src="__STATIC__/service/js/ai_service.ser.v2.js"></script>
+{/if}
+<script src="__STATIC__/common/js/voice.js"></script>
+<script src="__STATIC__/common/js/recorder.js"></script>
+<script src="__STATIC__/common/js/flashTitle.js"></script>
+</body>
+</html>

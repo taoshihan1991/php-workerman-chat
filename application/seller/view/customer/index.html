@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>访客列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">接待时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" placeholder="请输入" autocomplete="off" class="layui-input" id="start" style="width: 200px">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">接待客服</label>
+                    <div class="layui-input-block">
+                        <select name="kefu_code" id="kefu_code">
+                            <option value="">选择一个客服</option>
+                            {foreach name="kefu" item="vo" key="key"}
+                            <option value="{$key}">{$vo}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-front-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>客服</th>
+                    <th>接待数量</th>
+                </tr>
+                </thead>
+                <tbody id="show-num">
+
+                </tbody>
+                <script id="num-tpl" type="text/html">
+                    {{#  layui.each(d.data, function(index, item){ }}
+                    <tr>
+                        <td>{{ item.kefu_name }}</td>
+                        <td>{{ item.t_total }}</td>
+                    </tr>
+                    {{#  }); }}
+                </script>
+            </table>
+            <blockquote class="layui-elem-quote">详情</blockquote>
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/'
+    }).extend({
+        index: 'lib/index'
+    }).use(['index', 'laydate'], function(){
+        var $ = layui.$;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start'
+            ,range: true
+    });
+
+
+        var active = {
+
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderData();
+    renderTable();
+
+    function renderData() {
+
+        layui.use(['jquery', 'laytpl'], function () {
+            var $ = layui.$
+                ,laytpl = layui.laytpl;
+
+            $.post('/seller/customer/showNum', {
+                start_time: $("#start").val(),
+                kefu_code: $("#kefu_code").val()}, function (res) {
+
+                var getTpl = $("#num-tpl").html()
+                    ,view = document.getElementById('show-num');
+                laytpl(getTpl).render(res, function(html){
+                    view.innerHTML = html;
+                });
+            }, 'json');
+        });
+    }
+
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form', 'laytpl'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/seller/customer/index",
+                cols: [
+                    [{
+                        field: "customer_name",
+                        title: "访客名"
+                    }, {
+                        field: "customer_ip",
+                        title: "访客ip"
+                    }, {
+                        field: "location",
+                        title: "地区"
+                    }, {
+                        field: "start_time",
+                        title: "开始接待时间"
+                    }, {
+                        field: "end_time",
+                        title: "结束接待时间"
+                    }, {
+                        field: "service_time",
+                        title: "接待时长"
+                    }, {
+                        field: "kefu_code",
+                        title: "接待的客服",
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+
+                renderData();
+            });
+        });
+    }
+</script>
+</body>
+</html>

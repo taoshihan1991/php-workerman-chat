@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>黑名单管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">ip</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ip" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-front-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="table-seller-admin">
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index'], function(){
+        var $ = layui.$;
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/seller/blacklist/index",
+                cols: [
+                    [{
+                        field: "list_id",
+                        title: "ID"
+                    }, {
+                        field: "ip",
+                        title: "IP"
+                    }, {
+                        field: "customer_name",
+                        title: "访客名称"
+                    }, {
+                        field: "customer_real_name",
+                        title: "访客备注名称",
+                    }, {
+                        field: "add_time",
+                        title: "添加时间",
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("del" === e.event) {
+
+                        layer.confirm('您确定要删除该分组？', {
+                            title: '友情提示',
+                            icon: 3,
+                            btn: ['是的', '再想想']
+                        }, function(){
+
+                            if(1 == e.data.first_service) {
+                                layer.msg('不可删除前置服务组');
+                                return false;
+                            }
+
+                            $.getJSON("/seller/blacklist/delBlacklist/list_id/" + e.data.list_id, function (res) {
+                                if(0 == res.code) {
+                                    layer.msg(res.msg);
+                                    setTimeout(function () {
+                                        renderTable();
+                                    }, 300);
+                                } else {
+                                    layer.msg(res.msg);
+                                }
+                            });
+
+                        }, function(){
+
+                        });
+                    }
+                });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+            });
+        });
+    }
+</script>
+</body>
+</html>

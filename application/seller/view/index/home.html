@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多商户客服首页面板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    累计接待量
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$total_num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    今日接待量
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$today_num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    当前在线客服
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$online_kefu}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    当前在线未咨询访客
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font">{$customer_num}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm12">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-sm8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">在线客服详情</div>
+                        <div class="layui-card-body">
+                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>最后登录时间</th>
+                                    <th>状态</th>
+                                    <th>服务人数</th>
+                                    <th>累计服务人数</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {if !empty($kefu)}
+                                {foreach name="kefu" item="vo"}
+                                <tr>
+                                    <td><span class="first">{$vo['kefu_name']}</span></td>
+                                    <td><i class="layui-icon layui-icon-log"> {$vo['last_login_time']}</i></td>
+                                    <td><span>{if $vo['online_status'] == 1}在线{else/}忙碌{/if}</span></td>
+                                    <td>{$vo['service_num']}</td>
+                                    <td>{$vo['total_service_num']}</td>
+                                </tr>
+                                {/foreach}
+                                {/if}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">使用有效期</div>
+                        <div class="layui-card-body">
+                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>日期</th>
+                                    <th>天数</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>有效期至</td>
+                                    <td>{$seller['valid_time']}</td>
+                                    <td>{:getValidDays($seller['valid_time'])}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    最近15天接待情况
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-col-sm812">
+                            <div carousel-item id="LAY-index-pagetwo" style="width: 100%;height: 400px">
+                                <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(["index", "echarts"], function () {
+
+        var myChart = echarts.init(document.getElementById('LAY-index-pagetwo'), layui.echartsTheme);
+
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: 'category',
+                data: {$fifteenDays|raw}
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '接待人数',
+                data: {$fifteenNum|raw},
+                type: 'line',
+                smooth: true
+            }]
+        };
+
+        myChart.setOption(option);
+    });
+</script>
+</body>
+</html>

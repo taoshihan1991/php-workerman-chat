@@ -1,0 +1,188 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>登录</title>
+    <link href="__STATIC__/service/css/reset.css" rel="stylesheet" type="text/css"/>
+    <script src="__STATIC__/common/js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__STATIC__/layui/layui.js"></script>
+    <style>
+        @charset "utf-8";
+        /*找回密码*/
+        .g-common{font-family:"Helvetica Neue",Helvetica,Tahoma,sans-serif,arial; }
+        .g-common a,.g-common .m-form-input{-webkit-tap-highlight-color:rgba(255,255,255,0); -webkit-appearance:none;}
+        .m-common-bar{position:relative; border-bottom:1px #DDD solid; height:44px; line-height:44px;}
+        .m-common-bar .m-common-title{margin:0 44px; text-align: center; font-size: 16px; color:#333; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;  }
+        .m-common-bar .m-reback-link{display:block;position:absolute; left:0; top:0; width:44px; height:100%; text-align:center; text-align:center;}
+        .m-common-bar .mw-iconfont{ font-size: 18px; color:#999;}
+        .m-common-wrap{margin:20px;}
+        /*~~~~~~~按钮~~~~~~~*/
+        .btn{display:inline-block; border-radius:2px; text-align:center;}
+        .btn.btn-nor{height:46px; line-height:46px; font-size:18px;}
+        .btn.btn-block{width:100%; display:block;}
+        .btn.btn-info{color:#FFF; box-shadow:0 4px 12px rgba(175,218,240,.5); background: -moz-linear-gradient(left, #5D9CEC, #6DCAF6); background: -o-linear-gradient(left, #5D9CEC, #6DCAF6); background: linear-gradient(left, #5D9CEC, #6DCAF6); background: -webkit-gradient(linear, left 0, right 0, from(#5D9CEC), to(#6DCAF6));}
+        .btn.z-disabled{filter: alpha(opacity=50); -moz-opacity: 0.5; -webkit-opacity: 0.5; -ms-opacity: 0.5;  -o-opacity: 0.5; opacity: 0.5; }
+        .btn.btn-info img{display:none; }
+        /*~~~~~~~验证提示~~~~~~~*/
+        .m-verify{margin:0; padding:0; padding-bottom:6px; min-height:21px; overflow:hidden; word-wrap:break-word;}
+        .m-verify .m-verify-in { margin: 0;  padding: 4px 8px 4px 10px; display: block;  line-height: 16px; background-color: #FFE8E4; border: 1px #ffd0ca solid;  color: #e75845; font-size: 12px;}
+        .m-verify .m-verify-in .mw-iconfont{font-size:14px; vertical-align:top; margin:0 4px 0 0; position:relative; top:1px;}
+        /*~~~~~~~表单~~~~~~~*/
+        .m-form{margin-bottom:14px;}
+        .m-form.has-error .m-input-wrap{border-color:#e75845; background-color: #fff3f1;}
+        .m-form.has-error .mw-iconfont.m-itemicon{ color:#F5A699; }
+        .m-form .m-input-wrap{position:relative; padding:0 44px 0 10px; border-radius:2px; border:1px #CCD1D9 solid; background-color:#FFF; }
+        .m-form .m-input-wrap .m-text-clear{ position:absolute; top:0; right:0; width:44px; height:44px; line-height:44px; text-align:center;  color:#CCC; }
+        .m-form .m-input-wrap .m-text-clear .mw-iconfont{font-size:16px;}
+        .m-form .m-input-wrap .m-form-input{padding: 12px 0; width:100%; border:none; background-color:transparent;  font-size:14px; color:#333;}
+        .m-form.m-code .m-input-wrap{padding-right:134px;}
+        .m-form.m-code .m-codeimg{position:absolute; right:2px; top:2px; bottom:0; width:88px;}
+        .m-form.m-code .m-codeimg img{width:88px; height:38px; vertical-align:middle;}
+        .m-form.m-code .m-input-wrap .m-text-clear{right:90px;}
+        /*~~~~~~~表单显示~~~~~~~*/
+        .m-form.m-formshow{padding:9px 0; line-height: 24px;}
+        .m-form .m-form-label{font-size:14px; color:#666;}
+        .m-form .m-form-info{font-size:14px; color:#333; word-break:break-all;}
+        .m-form.m-formshow{position:relative; padding-left:74px;}
+        .m-form.m-formshow .m-lab72{position:absolute; left:0; width:74px; overflow:hidden;}
+        /*~~~~~~~发送验证码~~~~~~~*/
+        .m-form.m-code .m-codesend{position:absolute; top:0; right:0; width:102px; overflow:hidden;}
+        .m-codesend .code-btn.code-before,.m-codesend .code-btn.code-after{display:none;}
+        .m-codesend .code-btn{display:block; padding:0 10px; height:44px; text-align:right;  line-height:44px; font-size:14px; color:#5FA3ED;}
+        .m-codesend .code-after{color:#CCC;}
+        .m-codesend.m-send-before .code-before{display:block;}
+        .m-codesend.m-send-after .code-after{display:block;}
+        /*~~~~~~~重置密码~~~~~~~*/
+        .m-form.m-form-psw .m-input-wrap{padding-right:88px;}
+        .m-form.m-form-psw .m-input-wrap .m-text-see{position:absolute; top:0; right:0; width:44px; height:44px; line-height:44px; text-align:center;  color:#CCC;}
+        .m-form.m-form-psw .m-input-wrap .m-text-see .mw-iconfont{font-size:20px;}
+        .m-form.m-form-psw .m-input-wrap .m-text-clear{right:44px;}
+        /*~~~~~~~重置密码成功~~~~~~~*/
+        .m-psw-tip{padding:24px 0 34px 0;}
+        .m-psw-tip .m-psw-imgtip{ text-align:center;}
+        .m-psw-tip .m-psw-imgtip img{display:inline-block; width:42px; height:auto;}
+        .m-psw-tip .m-psw-textip{padding-top:10px; text-align:center; font-size:14px; color:#333; line-height:24px; word-break:break-all;}
+        .m-psw-tip .m-psw-textip .name{color:#60A5ED; font-weight:bold; }
+        /*~~~~~~~登录~~~~~~~*/
+        .g-body .m-form .m-input-wrap .m-form-input{font-size:14px;}
+        .g-body{ background: -moz-linear-gradient(top, #FFF, #F0FBFF); background: -o-linear-gradient(top, #FFF, #F0FBFF); background: linear-gradient(top, #FFF, #F0FBFF); background: -webkit-gradient(linear, 0 top, 0 bottom, from(#FFF), to(#F0FBFF));}
+        .g-head{padding:45px 0 25px 0; text-align:center; }
+        .g-head .m-head-icon img{display:inline-block; width:150px; height:auto;}
+        .g-head .m-head-title{padding-top:6px; color:#566067; font-size:22px;}
+        .m-form.m-form-hasicon .m-input-wrap{padding-left:44px;}
+        .m-form.m-form-hasicon .m-itemicon{position:absolute; top:0; left:0; width:44px; height:44px; line-height:44px; text-align:center; font-size:16px;  color:#CCC;}
+        .m-link{color:#2C97DE; font-size:14px;}
+        .btn-loging{filter: alpha(opacity=50); -moz-opacity: 0.5; -webkit-opacity: 0.5; -ms-opacity: 0.5;  -o-opacity: 0.5; opacity: 0.5; }
+        .btn.btn-info.btn-loging img{width:16px; height:16px; margin-left:5px; display:inline-block; }
+        .btn.btn-info img{display:none; }
+        /*~~~~~~~其它登录方式~~~~~~~*/
+        /* 2018-01-10 hy*/
+        .m-loginother{padding:16px 0 0 0; text-align:center; }
+        .m-othertop{ position:relative; width:100%;  }
+        .m-othertop:before,.m-othertop:after{content: "";width:30%; top:50%; height:1px; background-color:#ADB5C1; filter: alpha(opacity=50);opacity: 0.5;position:absolute;}
+        .m-othertop:before{left:0;}
+        .m-othertop:after{right:0; }
+        .u-ctext{color:#ADB5C1; font-size:14px;}
+        .m-otherbot{padding-top:14px;}
+        .m-otherbot .m-otherlink{display:inline-block; width:44px; height:44px; line-height:44px; text-align:center; border:1px #65B2F0 solid; border-radius:50px; }
+        .m-otherbot .m-otherlink .mw-iconfont{font-size:24px; color:#65B2F0; }
+        .m-otherbot .m-otherlink:hover{background-color:#65B2F0; }
+        .m-otherbot .m-otherlink:hover .mw-iconfont{color:#FFF; }
+        .m-formicon {position: absolute;top: 0;left: 0;width: 44px;height: 44px;line-height: 44px;text-align: center;font-size: 16px;color: #CCC;}
+        .m-formicon img{vertical-align:middle;width: 18px;margin-top: 12px;}
+    </style>
+</head>
+
+<body class="g-body" style="">
+<div class="g-common">
+    <div class="g-head">
+        <div class="m-head-icon"><img src="__STATIC__/service/picture/desk.png"></div>
+        <div class="m-head-title">用户登录</div>
+    </div>
+    <div class="m-common-wrap">
+        <form id="loginForm" novalidate="novalidate">
+            <div class="m-form m-form-hasicon">
+                <div class="m-input-wrap">
+                    <span class="m-formicon"><img src="__STATIC__/service/picture/user01.png"></span>
+                    <input type="text" class="m-form-input" name="username" id="username" placeholder="账号" autocomplete="off">
+                </div>
+            </div>
+            <div class="m-form m-form-hasicon m-form-psw">
+                <div class="m-input-wrap">
+                    <span class="m-formicon"><img src="__STATIC__/service/picture/lock01.png"></span>
+                    <input type="password" class="m-form-input" name="password" id="password" placeholder="密码" autocomplete="off">
+                </div>
+            </div>
+            <div class="m-form m-code">
+                <div class="m-input-wrap">
+                    <input id="validcode" type="text" class="m-form-input" name="validcode" placeholder="验证码" autocomplete="off">
+                    <div class="m-codeimg"><img id="imgCode" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?t='+Math.random();" title="不清楚? 点击换一个"></div>
+                </div>
+            </div>
+        </form>
+        <div class="m-form">
+            <a href="javascript:void(0)" id="loginBtn" class="btn btn-block btn-nor btn-info">登录</a>
+        </div>
+        <div style="margin-top:30px;text-align:center;color: #969696;">Copyright © 2015-{:date('Y')} AI智能客服版权所有</div>
+    </div>
+</div>
+<script>
+    var seller = "{$seller}";
+
+    $(function(){
+        $("#loginBtn").click(function(){
+            doLogin();
+        });
+    });
+
+    function initCode() {
+        $('#imgCode').attr("src","{:captcha_src()}?t=" + Math.random());
+    }
+
+    function doLogin(){
+        layui.use(['layer'], function(){
+            var layer = layui.layer;
+            layer.ready(function(){
+                var user_name = $("#username").val();
+                var password = $("#password").val();
+                var validcode = $("#validcode").val();
+
+                if('' == user_name){
+                    layer.msg('请输入用户名');
+                    return false;
+                }
+
+                if('' == password){
+                    layer.msg('请输入密码');
+                    return false;
+                }
+
+                if('' == validcode){
+                    layer.msg('请输入验证码');
+                    return false;
+                }
+
+                var index = layer.load(0, {shade: false});
+                $.post('/service/login/doLogin', {
+                    username: user_name,
+                    password: password,
+                    validcode: validcode,
+                    seller: seller
+                }, function(res){
+                    layer.close(index);
+                    if(0 == res.code){
+                        window.location.href = res.data;
+                    }else{
+                        layer.msg(res.msg,{icon:2,time:1000},function () {
+                            initCode();
+                        })
+                    }
+                }, 'json');
+            });
+        });
+    }
+</script>
+</body>
+</html>

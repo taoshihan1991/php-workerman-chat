@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商户有效期管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">商户名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="seller_name" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="table-seller-admin">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>设置</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/static/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+
+        var active = {
+
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        // 监听搜索
+        form.on('submit(LAY-user-back-search)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/validate/index",
+                cols: [
+                    [{
+                        field: "seller_code",
+                        title: "商户标识"
+                    }, {
+                        field: "seller_name",
+                        title: "商户名称",
+                    }, {
+                        field: "valid_time",
+                        title: "有效期",
+                    }, {
+                        field: "max_group_num",
+                        title: "分组数量",
+                    }, {
+                        field: "max_kefu_num",
+                        title: "坐席数量",
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        width: 250,
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: "对不起，加载出现异常！"
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("edit" === e.event) {
+
+                        layer.open({
+                            type: 2,
+                            title: "设置商户",
+                            content: "/admin/validate/editSeller/seller_id/" + e.data.seller_id,
+                            area: ['60%', '80%']
+                        });
+                    }
+                });
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>客服列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="avatarTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.kefu_avatar }}>
+
+            </script>
+            <script type="text/html" id="onlineTpl">
+                {{#  if(d.online_status == 1){ }}
+                <button class="layui-btn layui-btn-xs layui-btn-danger">在线</button>
+                {{#  } else { }}
+                <button class="layui-btn layui-btn-primary layui-btn-xs">离线</button>
+                {{#  } }}
+            </script>
+            <script type="text/html" id="buttonTpl">
+                {{#  if(d.kefu_status == 1){ }}
+                <button class="layui-btn layui-btn-xs">已激活</button>
+                {{#  } else { }}
+                <button class="layui-btn layui-btn-primary layui-btn-xs">已禁用</button>
+                {{#  } }}
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/static/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/static/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table']);
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/seller/showKeFuList",
+                where: {seller_id: {$seller_id}},
+                cols: [
+                    [{
+                        field: "kefu_code",
+                        title: "客服标识"
+                    }, {
+                        field: "kefu_name",
+                        title: "客服名称",
+                    }, {
+                        field: "kefu_avatar",
+                        title: "客服头像",
+                        templet: "#avatarTpl",
+                    }, {
+                        field: "group_name",
+                        title: "所属分组",
+                    }, {
+                        field: "max_service_num",
+                        title: "最大服务人数",
+                    }, {
+                        field: "kefu_status",
+                        title: "客服状态",
+                        templet: "#buttonTpl",
+                    }, {
+                        field: "online_status",
+                        title: "在线状态",
+                        templet: "#onlineTpl",
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>

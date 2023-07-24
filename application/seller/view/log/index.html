@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>聊天日志</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/customer/css/ai_service.cli.v2.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        td{cursor: pointer}
+        .active{background: #2F4056;color: white}
+    </style>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">清理记录</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="clean-date" placeholder="选择时间" autocomplete="off" class="layui-input" style="width: 250px">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-front-search" id="clear">
+                        <i class="layui-icon layui-icon-delete layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-xs2" style="height: 600px;overflow: auto">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>所有的客服</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="all_kf" item="vo"}
+                    <tr onclick="chooseKF(this)" data-code="{$vo['kefu_code']}">
+                        <td>{$vo['kefu_name']}</td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-col-xs2" style="height: 600px;overflow: auto">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>接待时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr onclick="chooseDate(this)" data-day="-7">
+                        <td>最近7天</td>
+                    </tr>
+                    <tr onclick="chooseDate(this)" data-day="-30">
+                        <td>最近30天</td>
+                    </tr>
+                    <tr id="self-do">
+                        <td>自定义</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px 5px">
+                            <input type="text" class="layui-input" id="show-date" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="layui-btn layui-btn-sm" id="find-customer">获取访客</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-col-xs2" style="height: 600px;overflow: auto">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>访客列表</th>
+                    </tr>
+                    </thead>
+                    <tbody id="show-customer">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-col-xs6" style="height: 600px;overflow: auto;border-left:1px solid #e2e2e2">
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">聊天内容</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="content" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 300px">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-admin" id="filter">
+                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row chat-body">
+                    <div class="chat-box">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/layui/layui.js"></script>
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script src="__STATIC__/common/js/ai_service.v2.js"></script>
+<script>
+    var searchParam = {
+        kefu_code: null,
+        talk_date: "",
+        customer_id: 0,
+        content: '',
+        page: 0
+    };
+
+    function chooseKF(obj) {
+
+        var kefuCode = $(obj).attr('data-code');
+        searchParam.kefu_code = kefuCode;
+        $(obj).addClass('active').siblings().removeClass('active');
+
+        if (searchParam.talk_date) {
+            findCustomer();
+        }
+    }
+
+    function chooseDate(obj) {
+        $(obj).addClass('active').siblings().removeClass('active');
+        searchParam.talk_date = $(obj).attr('data-day');
+        $("#show-date").val('');
+    }
+
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#show-date'
+            ,range: true
+            ,done: function(value, date, endDate){
+                searchParam.talk_date = value;
+                $("#self-do").addClass('active').siblings().removeClass('active');
+            }
+        });
+    });
+
+    function findCustomer() {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+
+            if (!searchParam.kefu_code) {
+                layer.msg('请选择客服');
+                return ;
+            }
+
+            if (!searchParam.talk_date) {
+                layer.msg('请选择接待日期');
+                return ;
+            }
+
+            var index = layer.load(0, {shade: false});
+            $.post("{:url('log/getTakeCaredCustomer')}", searchParam, function (res) {
+                layer.close(index);
+                if (0 == res.code) {
+                    var _tr = '';
+                    if (res.data.length == 0) {
+                        _tr = '<tr><td style="color: red">暂无数据</td></tr>';
+                    } else {
+                        $.each(res.data, function (k, v) {
+                            if (v.real_name) {
+                                _tr += '<tr onclick="chooseCustomer(this)" data-id="' + v.customer_id + '"><td>' + v.real_name + '</td></tr>';
+                            } else {
+                                _tr += '<tr onclick="chooseCustomer(this)" data-id="' + v.customer_id + '"><td>' + v.customer_name + '</td></tr>';
+                            }
+                        });
+                    }
+
+                    $("#show-customer").html(_tr);
+                } else {
+                    layer.msg(res.msg);
+                }
+            }, 'json');
+        });
+    }
+    
+    $(function () {
+
+        $("#find-customer").click(function () {
+            findCustomer();
+        });
+
+        $("#filter").click(function () {
+            var content = $("#content").val();
+            if (content == '') {
+                layui.use('layer', function () {
+                    var layer = layui.layer;
+
+                    layer.msg('请输入聊天内容');
+                });
+
+                return ;
+            }
+
+            searchParam.content = content;
+            getChatLog(1);
+        });
+
+        $("#clear").click(function () {
+
+            layui.use('layer', function () {
+                var layer = layui.layer;
+
+                var cleanDate = $('#clean-date').val();
+                if (!cleanDate) {
+                    layer.msg('请选择日期');
+
+                    return false;
+                }
+
+                layer.confirm('确定要清理聊天记录？', {
+                    icon: 3,
+                    title: '友情提示',
+                    btn: ['确定', '取消']
+                }, function() {
+
+                    $.post("{:url('log/clean')}", {cleanDate: cleanDate}, function (res) {
+                        if (0 == res.code) {
+                            layer.msg(res.msg);
+                        } else {
+                            layer.msg(res.msg);
+                        }
+                    }, 'json');
+                }, function() {
+
+                });
+            });
+        });
+    });
+
+    function chooseCustomer(obj) {
+        $(obj).addClass('active').siblings().removeClass('active');
+        searchParam.customer_id = $(obj).attr('data-id');
+        searchParam.content = $("#content").val();
+
+        getChatLog(1);
+    }
+
+    // 获取聊天记录
+    function getChatLog(page, flag, bottom) {
+        searchParam.page = page;
+        $.post('/seller/log/getChatLogDetail', searchParam, function(res){
+            if(0 == res.code && res.data.length > 0) {
+
+                if(res.msg == res.total){
+                    var _html = '<div class="clearfloat"><div class="author-name"><small>没有更多了</small></div><div style="clear:both"></div></div>';
+                }else{
+                    var _html = '<div class="clearfloat"><div class="author-name" data-page="' + parseInt(res.msg + 1)
+                        + '" onclick="getMore(this)"><small class="chat-system">更多记录</small></div><div style="clear:both"></div></div>';
+                }
+
+                $.each(res.data, function (k, v) {
+                    if(v.type == 'mine') {
+
+                        _html += ai_service.showMyChatLog(v);
+                    } else if(v.type == 'user'){
+
+                        _html += ai_service.showMessage({time: v.create_time, avatar: v.from_avatar, content: v.content});
+                    }
+                });
+
+                if(typeof flag == 'undefined'){
+                    $(".chat-box").html(_html);
+                }else{
+                    $(".chat-box").prepend(_html);
+                }
+
+                ai_service.showBigPic();
+
+                if(typeof bottom == 'undefined') {
+                    wordBottom();
+                }
+            } else if (0 == res.code && res.data.length == '') {
+
+                $(".chat-box").html('<p style="text-align: center;margin-top: 20px;color: red">暂无数据</p>');
+            }
+        }, 'json');
+    }
+
+    // 获取更多的的记录
+    function getMore(obj) {
+        $(obj).remove();
+
+        var page = $(obj).attr('data-page');
+
+        getChatLog(page, 1, 1);
+    }
+
+    // 滚动到最底端
+    function wordBottom() {
+        var box = $(".chat-box");
+        box.scrollTop(box[0].scrollHeight);
+    }
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#clean-date'
+            ,range: true
+        });
+    });
+</script>
+</body>
+</html>

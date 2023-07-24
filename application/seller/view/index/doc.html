@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加分组</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-tab layui-tab-brief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">弹层接入</li>
+                        <li>固定连接接入</li>
+                        <li>指定客服模式</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-card-body">
+                                <h3>在您要接入的网站内添加如下的代码：</h3>
+                                <pre class="layui-code"><p>&lt;script src="{$domain}/index/index/chatBoxJs/u/{$seller_code}"&gt;&lt;/script&gt;</p><p>&lt;script&gt;ServiceChat.init();&lt;/script&gt;</p></pre>
+                                <h3>则会在您的网站上显示蓝色的，咨询客服按钮。</h3>
+                                <br/>
+                                <ul class="site-doc-bgcolor">
+                                    <li class="layui-bg-red" style="padding: 10px">！如果你们的网站有自己的 用户id 、用户名、头像信息，您可以通过如下方式传入</li>
+                                </ul>
+                                <pre class="layui-code"><p>&lt;script src="{$domain}/index/index/chatBoxJs/u/{$seller_code}"&gt;&lt;/script&gt;</p><p>&lt;script&gt; ServiceChat.init({uid: xxx, uName: xxx, avatar: xxx}); &lt;/script&gt;</p></pre>
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>参数</th>
+                                        <th>解释</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>uid</td>
+                                        <td>访客的唯一标识，可以是你网站的用户id 或者 其他标识，不传系统自动生成 uuid</td>
+                                    </tr>
+                                    <tr>
+                                        <td>uName</td>
+                                        <td>访客的昵称，不传的话，系统自动会拼接 '访客' + uid</td>
+                                    </tr>
+                                    <tr>
+                                        <td>avatar</td>
+                                        <td>访客的头像，即您网站的用户头像, 不传默认是系统的通用头像</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p>系统默认的用户信息如下：</p>
+                                <pre class="layui-code"><p>uid = '3pbzowjtbz0000'; </p><p>uName = '访客3pbzowjtbz0000'; </p><p>avatar = 'http://xxx.com__STATIC__/common/images/customer.png';</p></pre>
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-card-body">
+                                    <h3>你可以在任何地方通过调用如下的连接：</h3>
+                                    <pre class="layui-code"><p>{$domain}/kefu/{$seller_code}</p></pre>
+                                    <h3>就会显示一个固定了宽的聊天页面。</h3>
+                                    <br/>
+                                    <ul class="site-doc-bgcolor">
+                                        <li class="layui-bg-red" style="padding: 10px">我这里限制了宽，如果您觉得不合适，可以自己进行修改。另外暂时不支持。</li>
+                                    </ul>
+                                    <br/>
+                                    <h3>从 v2.1.6 版本之后，加入可传访客信息的接口,您可以通过如下的接口传入访客的信息：</h3>
+                                    <pre class="layui-code"><p>{$domain}/index/index/kefu?u={$seller_code}&uid=xxx&name=xxx&avatar=xxx</p></pre>
+                                    <table class="layui-table">
+                                        <thead>
+                                        <tr>
+                                            <th>参数</th>
+                                            <th>解释</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>uid</td>
+                                            <td>访客的唯一标识，可以是你网站的用户id 或者 其他标识，不传系统自动生成 uuid</td>
+                                        </tr>
+                                        <tr>
+                                            <td>name</td>
+                                            <td>访客的昵称，不传的话，系统自动会拼接 '访客' + uid</td>
+                                        </tr>
+                                        <tr>
+                                            <td>avatar</td>
+                                            <td>访客的头像，即您网站的用户头像, 不传默认是系统的通用头像</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-card-body">
+                                    <h3>你可以在任何地方通过在固定连接后面添加客服的标识，实现接入指定客服的功能：</h3>
+
+                                    <table class="layui-table">
+                                        <thead>
+                                        <tr>
+                                            <th>客服名称</th>
+                                            <th>访问连接</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {foreach name="kefu" item="vo"}
+                                        <tr>
+                                            <td>{$vo['kefu_name']}</td>
+                                            <td>{$domain}/kefu/{$seller_code}/{$vo['kefu_code']}</td>
+                                        </tr>
+                                        {/foreach}
+                                        </tbody>
+                                    </table>
+                                    <ul class="site-doc-bgcolor">
+                                        <li class="layui-bg-orange" style="padding: 10px">考虑到您可能在别处批量调用客服，而不是一个个粘贴，特提供如下接口。 均为 GET 请求,返回json</li>
+                                    </ul>
+                                    <table class="layui-table">
+                                        <thead>
+                                        <tr>
+                                            <th>接口名称</th>
+                                            <th>接口地址</th>
+                                            <th>参数</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>获取指定分组下的客服</td>
+                                            <td>{$domain}/index/api/getSellerKeFuByGroup/seller_code/{$seller_code}/group_id/xxx</td>
+                                            <td>xxx 处替换为 分组ID</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index']);
+</script>
+</body>
+</html>

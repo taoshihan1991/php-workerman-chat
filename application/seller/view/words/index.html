@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>常用语管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <!--<div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分组名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="group_name" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-front-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>-->
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> 添加</button>
+                <!--<button class="layui-btn layuiadmin-btn-admin layui-btn-danger" data-type="import"><i class="layui-icon">&#xe654;</i> 导入</button>-->
+            </div>
+
+            <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
+            <script type="text/html" id="table-seller-admin">
+                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index'], function(){
+        var $ = layui.$;
+
+        var active = {
+
+            add: function() {
+                layer.open({
+                    type: 2
+                    ,title: '添加常用语'
+                    ,content: "{:url('words/addWord')}"
+                    ,area: ['70%', '90%']
+                });
+            },
+            import: function () {
+                layer.open({
+                    type: 2
+                    ,title: '导入常用语'
+                    ,content: "{:url('words/import')}"
+                    ,area: ['60%', '60%']
+                });
+            }
+        };
+
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/seller/words/index",
+                cols: [
+                    [{
+                        field: "word_id",
+                        title: "问题标识"
+                    }, {
+                        field: "title",
+                        title: "简略标题"
+                    }, {
+                        field: "cate_name",
+                        title: "所属分类"
+                    }, {
+                        field: "create_time",
+                        title: "创建时间",
+                    }, {
+                        field: "update_time",
+                        title: "更新时间",
+                    }, {
+                        title: "操作",
+                        align: "center",
+                        fixed: "right",
+                        toolbar: "#table-seller-admin"
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+            table.on("tool(LAY-user-table)",
+                function(e) {
+                    if ("del" === e.event) {
+
+                        layer.confirm('您确定要删除该项？', {
+                            title: '友情提示',
+                            icon: 3,
+                            btn: ['是的', '再想想']
+                        }, function(){
+
+                            $.getJSON("/seller/words/delWord/word_id/" + e.data.word_id, function (res) {
+                                if(0 == res.code) {
+                                    layer.msg(res.msg);
+                                    setTimeout(function () {
+                                        renderTable();
+                                    }, 300);
+                                } else {
+                                    layer.msg(res.msg);
+                                }
+                            });
+
+                        }, function(){
+
+                        });
+                    } else if ("edit" === e.event) {
+                        layer.open({
+                            type: 2
+                            ,title: '编辑常用语'
+                            ,content: "/seller/words/editWord/word_id/" + e.data.word_id
+                            ,area: ['70%', '90%']
+                        });
+                    }
+                });
+
+            // 监听搜索
+            form.on('submit(LAY-user-front-search)', function(data){
+                var field = data.field;
+
+                // 执行重载
+                table.reload('LAY-user-table', {
+                    where: field
+                });
+            });
+        });
+    }
+</script>
+</body>
+</html>
