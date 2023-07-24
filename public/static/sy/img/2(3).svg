@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="82px" viewBox="0 0 82 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>客服数据统计</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-662.000000, -10373.000000)">
+            <g id="模块8" transform="translate(0.000000, 10173.000000)">
+                <g id="客服数据统计" transform="translate(662.000000, 200.000000)">
+                    <circle id="椭圆形备份-17" fill="#39CEA5" fill-rule="evenodd" cx="41" cy="41" r="41"></circle>
+                    <path d="M20,34 C20,41.7319865 26.2680135,48 34,48 C41.7319865,48 48,41.7319865 48,34 C48,26.2680135 41.7319865,20 34,20 C26.2680135,20 20,26.2680135 20,34 Z" id="路径" fill="#FFFFFF" fill-rule="nonzero" opacity="0.2"></path>
+                    <g id="编组" stroke-width="1" fill-rule="evenodd" transform="translate(26.000000, 26.000000)" stroke="#FFFFFF" stroke-linejoin="round">
+                        <polygon id="路径" stroke-width="3.2" points="0 17.5 6 19 6 29.5 0 29.5"></polygon>
+                        <polygon id="路径" stroke-width="3.2" points="12 16 18 13 18 29.5 12 29.5"></polygon>
+                        <polygon id="路径" stroke-width="3.2" points="24 10 30 7 30 29.5 24 29.5"></polygon>
+                        <polyline id="路径" stroke-width="3.2" stroke-linecap="round" points="0 10.5 6 12 30 0 22.5 0"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

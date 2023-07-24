@@ -1,0 +1,1364 @@
+/**
+ * crisp-web - Crisp website
+ * @version v3.0.1
+ * @author Crisp IM SARL https://crisp.chat/
+ * @date 5/20/2021
+ */
+
+#body[data-page=pricing] {
+    background-color: #f2f4f6
+}
+
+#body[data-page=pricing][data-has-tooltip=true] {
+    cursor: help;
+    position: relative
+}
+
+#body[data-page=pricing][data-has-tooltip=true][data-name=basic] {
+    color: #FF8947 !important
+}
+
+#body[data-page=pricing][data-has-tooltip=true][data-name=pro] {
+    color: #47B9F3 !important
+}
+
+#body[data-page=pricing][data-has-tooltip=true][data-name=unlimited] {
+    color: #2D74DE !important
+}
+
+#body[data-page=pricing][data-has-tooltip=true]:hover .pricing-common-tooltip {
+    display: block;
+    animation-name: fadeInUp;
+    animation-duration: .25s
+}
+
+#body[data-page=pricing][data-has-tooltip=true] .pricing-common-tooltip {
+    background: #fff;
+    color: #52626C;
+    font-size: 12.6px;
+    letter-spacing: .2px;
+    line-height: 18px;
+    text-align: justify;
+    width: 200px;
+    margin-left: -100px;
+    padding: 10px 14px;
+    display: none;
+    position: absolute;
+    left: 50%;
+    right: 0;
+    top: 25px;
+    z-index: 100;
+    box-shadow: 0 4px 12px 0 rgba(186, 213, 241, .5);
+    border-radius: 2px
+}
+
+#body[data-page=pricing][data-has-tooltip=true] .pricing-common-tooltip.pricing-common-tooltip-feature {
+    top: 40px
+}
+
+#body[data-page=pricing][data-is-new=true] .pricing-common-new {
+    background: #FF6A8F;
+    color: #fff;
+    font-size: 11.7px;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin-left: 5px;
+    padding: 0 10px;
+    display: inline-block;
+    border-radius: 1px;
+    filter: alpha(Opacity=100);
+    opacity: 1
+}
+
+#body[data-page=pricing][data-is-new=true] .pricing-common-new.pricing-common-new-feature {
+    margin-top: 9px;
+    margin-right: 6px;
+    float: right
+}
+
+#body .body-main {
+    position: relative
+}
+
+#body .pricing-common-path-mock {
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    top: -68px
+}
+
+#body[data-page=pricing] .pricing-main {
+    padding-bottom: 120px;
+    position: relative;
+    background-size: cover;
+    width: 100%
+}
+
+#body[data-page=pricing] .pricing-main .body-wrapper {
+    position: relative;
+    z-index: 2
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+    text-align: center;
+    margin-top: 145px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+    font-size: 39.6px;
+    line-height: 46px;
+    color: #101010
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-moon {
+    width: 480px;
+    height: 510px;
+    background-image: url(/static/images/pricing/main/illustration_moon.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: -200px;
+    top: -60px;
+    z-index: 1;
+    opacity: .5;
+    display: none
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans {
+    margin-top: 115px;
+    position: relative;
+    z-index: 2
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-person {
+    width: 205px;
+    height: 366px;
+    float: left;
+    background-image: url(/static/img/illustration_person.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    margin-top: 40px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list {
+    display: inline-block;
+    float: left;
+    margin-bottom: 110px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one {
+    background: #fff;
+    text-align: center;
+    width: 280px;
+    height: 550px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    box-shadow: 0 6px 6px 0 rgba(178, 178, 178, .33);
+    border-radius: 4px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-animation,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-itself {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=pro] {
+    margin-left: 15px;
+    margin-right: 15px
+}
+
+
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=unlimited] {
+    margin-right: 15px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=basic] .pricing-main-plans-list-one-name,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=pro] .pricing-main-plans-list-one-name,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=unlimited] .pricing-main-plans-list-one-name {
+    color: #403882
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom-select,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-features,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-name,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price {
+    display: block
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-name {
+    font-size: 27px;
+    margin-top: 50px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration {
+    height: 70px;
+    width: 202px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-itself[data-type=basic] {
+    width: 115px;
+    height: 70px;
+    margin-left: -15px;
+    background-image: url(/static/images/pricing/main/icon_basic.png?33dd334);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-itself[data-type=pro] {
+    width: 169px;
+    height: 70px;
+    margin-left: -7px;
+    background-image: url(/static/images/pricing/main/icon_pro.png?33dd334);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-itself[data-type=unlimited] {
+    width: 202px;
+    height: 70px;
+    background-image: url(/static/images/pricing/main/icon_unlimited.png?33dd334);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-animation[data-type=basic] {
+    width: 115px;
+    height: 70px;
+    margin-left: -15px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-animation[data-type=pro] {
+    width: 169px;
+    height: 70px;
+    margin-left: -7px;
+    margin-top: 0
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-illustration .pricing-main-plans-list-one-illustration-animation[data-type=unlimited] {
+    width: 202px;
+    height: 70px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price {
+    margin-top: 25px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper {
+    display: inline-block;
+    height: 50px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-amount,
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-period {
+    float: left
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-period {
+    color: #9AB2C5
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-amount {
+    font-size: 42.3px;
+    color: #403882
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-amount[data-has-currency=true] {
+    padding-left: 26px;
+    position: relative
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-amount[data-has-currency=true]:before {
+    content: "";
+    font-size: 32.4px;
+    margin-top: 4px;
+    position: absolute;
+    left: 0
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-wrapper .pricing-main-plans-list-one-price-amount[data-has-currency=true][data-currency]:before {
+    content: attr(data-currency);
+    animation-name: bounceIn;
+    animation-duration: .35s;
+    animation-fill-mode: both
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-extra {
+    display: inline-block;
+    text-align: center;
+    font-size: 15.3px;
+    color: #101010;
+    margin-top: 8px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-price .pricing-main-plans-list-one-price-seats {
+    display: inline-block;
+    text-align: center;
+    font-size: 14.4px;
+    color: rgba(16, 16, 16, .5);
+    margin-top: 10px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-features {
+    margin-top: 27px;
+    margin-left: 24px;
+    margin-right: 24px;
+    font-size: 14.4px;
+    line-height: 22px;
+    display: block;
+    color: #617A90;
+    text-align: center
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 430px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-select {
+    border: 0;
+    font-size: 14.4px;
+    display: inline-block;
+    padding: 16px 40px 17px;
+    margin-left: 24px;
+    margin-right: 24px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-select[data-name=basic] {
+    border: 1px solid #3b82ff;
+    background: #fff;
+    color: #3b82ff;
+    margin-bottom: -1px
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-select[data-name=pro],
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-select[data-name=unlimited] {
+    background: #3b82ff
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-entice {
+    margin-top: 10px;
+    font-size: 11.7px;
+    display: block
+}
+
+#body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one .pricing-main-plans-list-one-bottom .pricing-main-plans-list-one-bottom-entice .pricing-main-plans-list-one-bottom-entice-one {
+    color: #617A90;
+    line-height: 14px;
+    opacity: .6
+}
+
+@media screen and (max-width:1100px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-person {
+        display: none
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list {
+        float: none;
+        margin-bottom: 0
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one {
+        transform: scale(.9)
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=pro] {
+        margin-left: -10px;
+        margin-right: -10px
+    }
+}
+
+@media screen and (max-width:949px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans {
+        margin-top: 60px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one {
+        transform: scale(1);
+        width: 400px;
+        margin-top: 40px;
+        float: none
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=basic] {
+        margin-top: 0
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one[data-name=pro] {
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
+@media screen and (max-width:750px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        font-size: 32.4px;
+    }
+}
+
+@media screen and (max-width:659px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+        margin-top: 40px !important
+    }
+}
+
+@media screen and (max-width:520px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        font-size: 27px;
+    }
+}
+
+@media screen and (max-width:470px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans .pricing-main-plans-list .pricing-main-plans-list-one {
+        width: 100%
+    }
+}
+
+@media screen and (max-height:870px) {
+    #body[data-page=pricing] .pricing-main {
+        padding-bottom: 0
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+        text-align: center;
+        margin-top: 125px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        font-size: 32.4px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans {
+        margin-top: 80px
+    }
+}
+
+@media screen and (max-height:800px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+        text-align: center;
+        margin-top: 100px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        font-size: 27px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans {
+        margin-top: 60px
+    }
+}
+
+@media screen and (max-height:740px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+        text-align: center;
+        margin-top: 80px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        font-size: 23.4px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-plans {
+        margin-top: 40px
+    }
+}
+
+@media screen and (max-height:700px) {
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper {
+        text-align: center;
+        margin-top: 120px
+    }
+
+    #body[data-page=pricing] .pricing-main .pricing-main-wrapper .pricing-main-title {
+        display: none
+    }
+}
+
+#body[data-page=pricing] .pricing-details {
+    padding-top: 110px;
+    padding-bottom: 600px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper {
+    max-width: 1096px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-title {
+    color: #384C78;
+    font-size: 21.6px;
+    letter-spacing: .83px;
+    text-align: center
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features {
+    margin-top: 54px;
+    width: 880px;
+    height: 1020px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan {
+    clear: both
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name {
+    clear: both;
+    text-align: left;
+    font-size: 16.2px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    display: flex
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-wrapper {
+    margin-right: 14px;
+    margin-left: 20px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-from {
+    color: #101010;
+    opacity: .4
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-itself {
+    margin-left: 6px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-itself[data-plan=basic] {
+    color: #FF8947
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-itself[data-plan=pro] {
+    color: #47B9F3
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-itself[data-plan=unlimited] {
+    color: #2D74DE
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-name .pricing-details-features-plan-name-separator {
+    flex: 1;
+    height: 1px;
+    background: #101010;
+    opacity: .1;
+    margin-top: 8px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-plan .pricing-details-features-plan-itself {
+    clear: both
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one {
+    float: left;
+    width: 25%;
+    height: 100px;
+    position: relative;
+    text-align: center;
+    cursor: pointer
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one:hover {
+    filter: alpha(Opacity=100);
+    opacity: 1
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one:hover>.pricing-details-features-one-tooltip {
+    display: block
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon {
+    width: 100%;
+    height: 32px;
+    position: absolute;
+    display: block
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself {
+    display: inline-block;
+    text-align: center;
+    height: 34px;
+    width: 34px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=chatbox] {
+    background-image: url(../img/chatbox.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin-top: 0
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=inbox] {
+    background-image: url(../img/inbox.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 30px;
+    width: 32px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=mobile] {
+    background-image: url(../img/mobile.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 28px;
+    width: 34px;
+    margin-top: 2px;
+    margin-left: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=notify] {
+    background-image: url(../img/notify.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 28px;
+    width: 34px;
+    margin-top: 2px;
+    margin-left: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=unlimited-history] {
+    background-image: url(../img/unlimited-history.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 32px;
+    width: 26px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=triggers] {
+    background-image: url(../img/triggers.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 34px;
+    height: 23px;
+    margin-top: 5.5px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=shortcuts] {
+    background-image: url(../img/shortcuts.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 36px;
+    height: 33px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=notes] {
+    background-image: url(../img/notes.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=customization] {
+    background-image: url(../img/customization.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 34px;
+    height: 34px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=audio] {
+    background-image: url(../img/audio.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 21px;
+    height: 34px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=slack] {
+    background-image: url(../img/slack.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+    opacity: .85
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=facebook] {
+    background-image: url(../img/facebook.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 14px;
+    height: 30px;
+    margin-top: 2px;
+    opacity: .87
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=twitter] {
+    background-image: url(../img/twitter.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 24px;
+    margin-top: 5px;
+    opacity: .87
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=email] {
+    background-image: url(../img/email.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    margin-top: 6px;
+    opacity: .87
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=telegram] {
+    background-image: url(../img/telegram.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 31px;
+    height: 27px;
+    margin-top: 4px;
+    margin-left: -2px;
+    opacity: .87
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=magicmap] {
+    background-image: url(../img/magicmap.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 26px;
+    height: 33px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=search] {
+    background-image: url(../img/search.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+    opacity: .9
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=block] {
+    background-image: url(../img/block.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    margin-top: 1px;
+    opacity: .95
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=helpdesk] {
+    background-image: url(../img/helpdesk.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 32px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=status] {
+    background-image: url(../img/status.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=reminders] {
+    background-image: url(../img/reminders.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 28px;
+    height: 32px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=routing] {
+    background-image: url(../img/routing.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 32px;
+    height: 31px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=magicbrowse] {
+    background-image: url(../img/magicbrowse.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 36px;
+    height: 35px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=livetranslate] {
+    background-image: url(../img/livetranslate.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 31px;
+    height: 29px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=auto-responder] {
+    background-image: url(../img/auto-responder.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 37px;
+    height: 34px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=bot] {
+    background-image: url(../img/bot.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 30px;
+    height: 27px;
+    margin-top: 7px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=automated-campaigns] {
+    background-image: url(../img/automated-campaigns.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 34px;
+    height: 30px;
+    margin-top: 3px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=crm] {
+    background-image: url(../img/crm.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 39px;
+    height: 32px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=video-chat] {
+    background-image: url(../img/video-chat.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 34px;
+    height: 24px;
+    margin-top: 6px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=analytics] {
+    background-image: url(../img/analytics.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-top: 3px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=sms] {
+    background-image: url(../img/sms.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 31px;
+    height: 31px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=line] {
+    background-image: url(../img/line.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 32px;
+    height: 31px;
+    margin-top: 2px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=zapier] {
+    background-image: url(../img/zapier.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-top: 4px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=salesforce] {
+    background-image: url(../img/salesforce.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 40px;
+    height: 28px;
+    margin-top: 4px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=pipedrive] {
+    background-image: url(../img/pipedrive.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 24px;
+    height: 30px;
+    margin-top: 3px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=zoho] {
+    background-image: url(../img/zoho.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 29px;
+    height: 36px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=hubspot] {
+    background-image: url(../img/hubspot.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 29px;
+    height: 32px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=user-ratings] {
+    background-image: url(../img/user-ratings.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-top: 1px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-icon .pricing-details-features-one-icon-itself[data-id=debranding] {
+    background-image: url(../img/debranding.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 31px;
+    height: 26px;
+    margin-top: 3px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-name {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 14.4px;
+    color: #617A90;
+    top: 44px;
+    letter-spacing: .7px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-badge {
+    height: 7px;
+    width: 7px;
+    border-radius: 14px;
+    text-align: center;
+    margin-top: 68px;
+    display: none
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-badge[data-plan=basic] {
+    background: #FF8947;
+    opacity: .7
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-badge[data-plan=pro] {
+    background: #47B9F3;
+    opacity: .7
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-badge[data-plan=unlimited] {
+    background: #1256BC
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip {
+    display: none;
+    position: absolute;
+    margin-top: 86px;
+    background: #fff;
+    box-shadow: 0 14px 74px 0 rgba(0, 0, 0, .25);
+    border-radius: 5px;
+    animation-name: fadeInUp;
+    animation-duration: .2s;
+    animation-fill-mode: both;
+    z-index: 50;
+    width: 150%;
+    left: -25%
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip:hover {
+    display: block
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-arrow {
+    margin-left: 14px;
+    position: absolute;
+    left: 50%;
+    top: -9px;
+    height: 10px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-arrow::after,
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-arrow::before {
+    content: "";
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    width: 0;
+    height: 12px;
+    position: absolute;
+    right: 0
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-arrow::before {
+    border-bottom: 15px solid #fff;
+    bottom: 1px;
+    z-index: 1
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-arrow::after {
+    border-bottom: 15px solid #fff;
+    bottom: 0;
+    z-index: 2
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content {
+    width: 100%;
+    text-align: left
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-plan {
+    float: left;
+    margin-top: 22px;
+    margin-left: 30px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-plan .pricing-details-features-one-tooltip-content-plan-text {
+    margin-right: 5px;
+    font-size: 14.4px;
+    color: #617A90;
+    letter-spacing: .7px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-plan .pricing-details-features-one-tooltip-content-plan-text[data-plan=basic] {
+    color: #FF8947;
+    text-transform: capitalize;
+    margin-left: -4px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-plan .pricing-details-features-one-tooltip-content-plan-text[data-plan=pro] {
+    color: #47B9F3;
+    text-transform: capitalize;
+    margin-left: -4px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-plan .pricing-details-features-one-tooltip-content-plan-text[data-plan=unlimited] {
+    color: #2D74DE;
+    text-transform: capitalize;
+    margin-left: -4px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-separator {
+    width: 260px;
+    height: 1px;
+    background: #E3E8EF;
+    display: block;
+    float: left;
+    clear: both;
+    margin-left: 30px;
+    margin-top: 11px
+}
+
+#body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one .pricing-details-features-one-tooltip .pricing-details-features-one-tooltip-content .pricing-details-features-one-tooltip-content-explain {
+    float: left;
+    clear: both;
+    line-height: 24px;
+    font-size: 14.4px;
+    color: #384C78;
+    letter-spacing: .7px;
+    margin: 18px 20px 24px 30px
+}
+
+@media screen and (max-width:800px) {
+    #body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features {
+        width: 100%
+    }
+}
+
+@media screen and (max-width:600px) {
+    #body[data-page=pricing] .pricing-details .body-wrapper .pricing-details-features .pricing-details-features-one {
+        width: 33%
+    }
+}
+
+@media screen and (max-width:460px) {
+    #body[data-page=pricing] .pricing-details {
+        display: none
+    }
+}
+
+#body[data-page=pricing] .pricing-billing {
+    text-align: center
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-title {
+    color: #384C78;
+    font-size: 18.9px;
+    letter-spacing: .83px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper {
+    margin-top: 72px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points {
+    display: inline-block
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one {
+    float: left;
+    width: 340px;
+    text-align: center;
+    margin-right: 30px;
+    background: #fff;
+    box-shadow: 0 0 12px 0 rgba(178, 178, 178, .33);
+    border-radius: 2px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:last-of-type {
+    margin-right: 0
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-illustration {
+    height: 230px;
+    position: relative
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper {
+    height: 210px;
+    display: block
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-description,
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-title {
+    display: block
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-title {
+    font-size: 16.2px;
+    margin-top: 40px;
+    color: #403882
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-description {
+    text-align: center;
+    margin-top: 40px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-description .pricing-billing-points-one-description-line {
+    font-size: 15.3px;
+    color: #101010;
+    line-height: 26px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one .pricing-billing-points-one-wrapper .pricing-billing-points-one-description .pricing-billing-points-one-description-line:last-of-type {
+    margin-bottom: 0
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(1) .pricing-billing-points-one-illustration {
+    background: #3c89ff
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(1) .pricing-billing-points-one-illustration .pricing-billing-points-one-illustration-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(/static/images/pricing/billing/first_background.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 100%;
+    width: 100%
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(1) .pricing-billing-points-one-illustration .pricing-billing-points-one-illustration-icon {
+    position: absolute;
+    left: 92px;
+    top: 80px;
+    background-image: url(/static/images/pricing/billing/first_icon.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 92px;
+    width: 173px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(2) .pricing-billing-points-one-illustration {
+    background: #ffd261
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(2) .pricing-billing-points-one-illustration .pricing-billing-points-one-illustration-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(/static/images/pricing/billing/second_background.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 100%;
+    width: 100%
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(2) .pricing-billing-points-one-illustration .pricing-billing-points-one-illustration-icon {
+    position: absolute;
+    left: 116px;
+    top: 50px;
+    background-image: url(/static/images/pricing/billing/second_icon.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 142px;
+    width: 106px
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(3) .pricing-billing-points-one-illustration {
+    background: #3c89ff
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(3) .pricing-billing-points-one-illustration-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(/static/images/pricing/billing/third_background.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 100%;
+    width: 100%
+}
+
+#body[data-page=pricing] .pricing-billing .pricing-billing-points-wrapper .pricing-billing-points .pricing-billing-points-one:nth-child(3) .pricing-billing-points-one-illustration-icon {
+    position: absolute;
+    left: 80px;
+    top: 90px;
+    background-image: url(/static/images/pricing/billing/third_icon.png?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover;
+    height: 90px;
+    width: 155px
+}
+
+@media screen and (max-width:1120px) {
+    #body[data-page=pricing] .pricing-billing {
+        display: none
+    }
+}

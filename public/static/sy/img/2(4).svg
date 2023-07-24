@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>回到顶部</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-35.3%" y="-35.3%" width="170.6%" height="170.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.180392157   0 0 0 0 0.188235294   0 0 0 0 0.329411765  0 0 0 0.164745411 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-1850.000000, -11821.000000)">
+            <g id="底部栏" transform="translate(0.000000, 11457.000000)">
+                <g id="回到顶部" filter="url(#filter-1)" transform="translate(1854.000000, 366.000000)">
+                    <circle id="椭圆形" fill="#FFFFFF" cx="17" cy="17" r="17"></circle>
+                    <path d="M17.124939,13.1639824 C17.136472,13.1732088 17.1469474,13.1836843 17.1561738,13.1952172 L20.7400488,17.675061 C20.8090507,17.7613134 20.7950664,17.8871719 20.708814,17.9561738 C20.6733514,17.9845438 20.6292893,18 20.583875,18 L18,18 L18,25.6 C18,25.8209139 17.8209139,26 17.6,26 L16.4,26 C16.1790861,26 16,25.8209139 16,25.6 L16,18 L13.416125,18 C13.305668,18 13.216125,17.9104569 13.216125,17.8 C13.216125,17.7545857 13.2315811,17.7105236 13.2599512,17.675061 L16.8438262,13.1952172 C16.9128281,13.1089648 17.0386866,13.0949805 17.124939,13.1639824 Z M24.6,9 C24.8209139,9 25,9.1790861 25,9.4 L25,10.6 C25,10.8209139 24.8209139,11 24.6,11 L9.4,11 C9.1790861,11 9,10.8209139 9,10.6 L9,9.4 C9,9.1790861 9.1790861,9 9.4,9 L24.6,9 Z" id="形状结合" fill="#2E3054"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

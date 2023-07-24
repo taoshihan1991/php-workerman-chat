@@ -1,0 +1,25 @@
+.no-read{height: 12px;font-size: 12px;color: #FF5722}
+.already-read{height: 12px;font-size: 12px;color: #c2c2c2}
+.container-home{width: 100%;height: 100%;}
+.user-header{height: 200px;width: 100%;background:url('../images/home_back.jpg') no-repeat}
+.user-avatar{height: 140px;width: 100%;}
+.user-avatar .user-name{text-align: center;color: #fff;margin-top: 15px}
+.user-detail{height: 60px;width: 100%;background: rgba(0, 0, 0, 0.4);}
+.user-avatar .avatar{width: 100px; height: 100px;margin: 0 auto;position: relative;top: 10px;border-radius: 100%;background-size:100px 100px;}
+.user-detail div{width: 30%;height: 80%;float: left;margin-left: 10px;text-align: center;color: #fff;margin-top: 10px;opacity:1;}
+.menu-box{height: 427px;width: 100%;background: #eee}
+.user-list{height: 280px;width: 100%;background: #fff;top:20px;position: relative;}
+.user-list li{list-style: none;width: 100%;height: 70px;border-bottom: 1px solid #eee;}
+.user-list li div{float: left;}
+.login-out{width: 98%;height: 50px;background: #FF5722;margin-top: 50px;color: white;margin-left:1%;line-height: 50px;text-align: center}
+.delbtn {color:#fff;position:absolute;right:-60px;display:inline-block;font-size:14px;width:60px;background:#FF5722;text-align: center;line-height:50px;top:0}
+.item.active{transform:translateX(-60px);transition:all .3s;}
+.background-cover{width: 100%;height: 100%;background: rgba(0, 0, 0, 0.3);position:absolute;top:0;left: 0;}
+.notice-box{width: 250px;height: 135px;background: #fff;margin: 0 auto;position: relative;top:30%}
+.user-avatar .avatar{width: 100px; height: 100px;margin: 0 auto;position: relative;top: 10px;border-radius: 100%;background-size:100px 100px;}
+.user-avatar{height: 140px;width: 100%;}
+.notice{width: 80%;margin-left:25%;height: 22px;padding-top: 10%}
+.conform{width: 100%;height: 50px;margin-top: 38px;border-top:1px solid #eee}
+.conform div{float: left;width: 49%;height: 49px;line-height: 49px;}
+.conform .btn-yes{text-align: center;color:#5FB878}
+.conform .btn-no{text-align: center;color:#e2e2e2;border-right: 1px solid #eee;}

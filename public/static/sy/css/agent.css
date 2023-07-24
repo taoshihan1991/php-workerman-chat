@@ -1,0 +1,171 @@
+.fl {
+    float: left;
+}
+
+#agent {
+    position: relative;
+
+}
+
+#agent .bn-content {
+    text-align: center;
+}
+
+#agent .bn-content .add_app-btn {
+    display: inline-block;
+    width: 120px;
+    margin: 50px 30px;
+}
+
+#agent .login {
+    position: absolute;
+    background-color: #fff;
+    color: black;
+    right: 50px;
+    top: 20px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+#agent .bn-content .add_app-btn.que {
+    background-color: #fff;
+    color: black
+}
+
+#agent .agent_info .block_content {
+    padding: 40px;
+    margin-top: 80px;
+}
+
+#agent .agent_advant .block_content {
+    padding: 0px;
+    margin-top: 80px;
+}
+
+#agent .home_block .block_content .block_contentUl .block_contentLi {
+    width: 270px;
+    height: 260px;
+    margin-right: 30px;
+    border: 1px solid #E6E6E6;
+    padding: 24px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#agent .home_block .block_content .block_contentUl .block_contentLi img {
+    margin-top: 26px;
+    margin-bottom: 28px;
+}
+
+#agent .home_block .block_content .block_contentUl .block_contentLi h2 {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+#agent .home_block .block_content .block_contentUl .block_contentLi p {
+    font-size: 14px;
+    color: #808080;
+    text-align: left;
+}
+
+#agent .home_block .block_content .block_contentUl .block_contentLi:last-child {
+    margin-right: 0;
+}
+
+#agent .flow {
+    height: 680px;
+    padding-top: 0;
+    position: relative;
+    overflow: inherit;
+
+}
+
+#agent .flow .large_title {
+    color: white;
+    padding-bottom: 80px;
+}
+
+#agent .info {
+    width: 200px;
+    text-align: center;
+}
+
+#agent .info img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 28px;
+}
+
+#agent .info p {
+    text-align: left;
+    color: white;
+}
+
+#agent .arrow img {
+    margin-top: 23px;
+}
+
+#agent .partwo .strageInfo {
+    width: 1200px;
+    height: 350px;
+    padding-top: 120px;
+    position: absolute;
+    bottom: -175px;
+    z-index: 999;
+    padding: 64px 118px;
+}
+
+#agent .partwo .strageInfo .tit {
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+#agent .partwo .strageInfo .p {
+    font-size: 14px;
+    color: #808080;
+    padding: 5px 0;
+}
+
+#agent .last {
+    margin-top: 200px;
+}
+
+#agent .last .list .item {
+    width: 100px;
+    margin-right: 52px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+#agent .last .list .item img {
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+#agent .last .list .item p {
+    font-size: 13px;
+    color: #000000;
+}
+
+#agent .last .list .item:nth-child(8n) {
+    margin-right: 0px;
+}
+
+#agent .tojoin {
+    margin: 0 auto;
+    background-color: #3477F4;
+    color: white;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    text-align: center;
+    margin-bottom: 100px;
+    border-radius: 5px;
+}

@@ -1,0 +1,530 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+* {
+    font-weight: 400 !important;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+#body {
+    overflow-x: hidden;
+    background: #fff;
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article:hover,
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-one:hover {
+    transform: scale(1.02)
+}
+
+#body[data-page=deep_page] .deeppage-entice {
+    position: relative;
+    box-shadow: inset 0 0 0 #fff, inset 0 -5px 0 #71A9FE;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: -6px
+}
+
+#body[data-page=deep_page] .deeppage-main {
+    background: #F2F4F6;
+    width: 100%;
+    height: 582px
+}
+
+#body[data-page=deep_page] .deeppage-main .body-wrapper {
+    position: relative;
+    height: 100%
+}
+
+#body[data-page=deep_page] .deeppage-main .deeppage-main-wrapper {
+    position: absolute;
+    top: 200px
+}
+
+#body[data-page=deep_page] .deeppage-main .deeppage-main-wrapper .deeppage-main-title {
+    color: #000;
+    line-height: 46px;
+    font-size: 39.6px;
+    letter-spacing: 1;
+    max-width: 800px
+}
+
+#body[data-page=deep_page] .deeppage-main .deeppage-main-wrapper .deeppage-main-subtitle {
+    color: #3E464E;
+    line-height: 22px;
+    font-size: 18px;
+    letter-spacing: .6;
+    margin-top: 22px;
+    max-width: 700px
+}
+
+#body[data-page=deep_page] .deeppage-main .deeppage-main-illustration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 380px;
+    height: 300px;
+    background-size: cover;
+    background-position: center
+}
+
+@media screen and (max-width: 1070px) {
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-wrapper .deeppage-main-title {
+        max-width: 700px
+    }
+
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-wrapper .deeppage-main-subtitle {
+        max-width: 450px
+    }
+}
+
+@media screen and (max-width: 659px) {
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-wrapper {
+        top: 34px
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-wrapper .deeppage-main-title {
+        font-size: 28.8px
+    }
+
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-wrapper .deeppage-main-subtitle {
+        font-size: 16.2px
+    }
+
+    #body[data-page=deep_page] .deeppage-main .body-wrapper .deeppage-main-illustration {
+        width: 340px;
+        height: 260px
+    }
+}
+
+#body[data-page=deep_page] .deeppage-content {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center
+}
+
+#body[data-page=deep_page] .deeppage-content .deeppage-content-description {
+    color: #3E464E;
+    font-size: 15.3px;
+    line-height: 30px;
+    letter-spacing: .7px;
+    margin-left: 40px;
+    margin-right: 40px
+}
+
+#body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper {
+    position: relative;
+    width: 809px;
+    height: 520px;
+    margin-top: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 6px 0 rgba(164, 178, 220, .16);
+    border: 1px solid #F2F4F6;
+    border-radius: 2px
+}
+
+#body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper .deeppage-content-video {
+    height: 100%;
+    width: 100%;
+    border-radius: 2px
+}
+
+#body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper .deeppage-content-video-progress {
+    position: absolute;
+    top: 0;
+    height: 2px;
+    background: #666;
+    transition: .25s linear;
+    border-radius: 1px;
+    opacity: .8
+}
+
+@media screen and (max-width: 1000px) {
+    #body[data-page=deep_page] .deeppage-content .deeppage-content-description {
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper {
+        width: 700px;
+        height: 390px
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper {
+        width: 500px;
+        height: 280px
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #body[data-page=deep_page] .deeppage-content .deeppage-content-description {
+        font-size: 13.5px
+    }
+
+    #body[data-page=deep_page] .deeppage-content .deeppage-content-video-wrapper {
+        width: 350px;
+        height: 180px
+    }
+}
+
+#body[data-page=deep_page] .deeppage-benefits {
+    padding-top: 80px;
+    background: #F2F4F6
+}
+
+#body[data-page=deep_page] .deeppage-benefits .body-wrapper {
+    width: 1300px
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper {
+    display: flex
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-illustration {
+    flex: .55
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-illustration .deeppage-benefits-illustration-itself {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points {
+    flex: .45;
+    margin-top: 80px
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points .deeppage-benefits-points-one {
+    margin-bottom: 60px;
+    margin-left: 40px
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points .deeppage-benefits-points-one:last-child {
+    margin-bottom: 0
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points .deeppage-benefits-points-one .deeppage-benefits-points-one-title {
+    font-size: 26px;
+    letter-spacing: .87px
+}
+
+#body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points .deeppage-benefits-points-one .deeppage-benefits-points-one-subtitle {
+    color: #3E464E;
+    font-size: 18px;
+    margin-top: 12px;
+    letter-spacing: .64px
+}
+
+@media screen and (max-width: 1400px) {
+    #body[data-page=deep_page] .deeppage-benefits .body-wrapper {
+        width: 1200px
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #body[data-page=deep_page] .deeppage-benefits .body-wrapper {
+        width: 1100px
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    #body[data-page=deep_page] .deeppage-benefits .body-wrapper {
+        width: initial
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #body[data-page=deep_page] .deeppage-benefits {
+        padding-top: 0
+    }
+
+    #body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper {
+        flex-direction: column-reverse
+    }
+
+    #body[data-page=deep_page] .deeppage-benefits .deeppage-benefits-wrapper .deeppage-benefits-points {
+        margin-bottom: 40px;
+        flex: 1;
+        text-align: center
+    }
+}
+
+#body[data-page=deep_page] .deeppage-similar {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    /* margin-bottom: 80px; */
+    display: flex;
+    background: #F2F4F6
+}
+
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-title {
+    text-align: center;
+    letter-spacing: 1.17px;
+    font-size: 35px;
+    margin-bottom: 90px
+}
+
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 36px
+}
+
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-one {
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 4px 4px 0 rgba(0, 0, 0, .1), 0 6px 8px 0 rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    transition: .25s ease-in-out;
+    color: #000;
+    text-align: left;
+    padding: 20px
+}
+
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-one .deeppage-similar-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+    text-align: left;
+    color: #377FEA
+}
+
+#body[data-page=deep_page] .deeppage-similar .deeppage-similar-one .deeppage-similar-subtitle {
+    font-size: 15px;
+    color: #6D7278
+}
+
+@media screen and (max-width: 850px) {
+    #body[data-page=deep_page] .deeppage-similar .deeppage-similar-list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px 36px
+    }
+}
+
+#body[data-page=deep_page] .deeppage-articles {
+    padding-top: 40px;
+    margin-bottom: 80px;
+    display: flex
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-articles-title {
+    text-align: center;
+    letter-spacing: 1.17px;
+    font-size: 35px;
+    margin-bottom: 90px
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-articles {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 36px;
+    display: grid
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article {
+    height: 365px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 4px 4px 0 rgba(0, 0, 0, .1), 0 6px 8px 0 rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    transition: .25s ease-in-out
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-cover {
+    height: 155px;
+    width: 100%;
+    background: #fff;
+    background-size: cover;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section {
+    display: flex;
+    padding: 16px 14px;
+    flex-direction: column
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #000
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-description-wrapper {
+    display: flex;
+    height: 91px
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-description-wrapper .deeppage-article-section-description {
+    font-size: 15px;
+    color: #6D7278;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    max-height: 82px;
+    line-height: 16px;
+    margin-bottom: 10px
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-description-wrapper .deeppage-article-section-description:before {
+    position: absolute;
+    content: "...";
+    bottom: 0;
+    right: 0
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-footer {
+    display: flex;
+    flex-direction: row
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-footer .deeppage-article-section-footer-date {
+    flex: 1;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #6D7278
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-footer .deeppage-article-section-footer-anchor {
+    display: flex;
+    flex-direction: row
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-footer .deeppage-article-section-footer-anchor .deeppage-article-section-footer-reading {
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #6D7278;
+    margin-right: 14px
+}
+
+#body[data-page=deep_page] .deeppage-articles .deeppage-article .deeppage-article-section .deeppage-article-section-footer .deeppage-article-section-footer-anchor .deeppage-article-section-footer-anchor-icon {
+    width: 20px;
+    height: 18px;
+    background-image: url(/static/images//features/deep_page/articles/arrow.svg?33dd334);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: cover
+}
+
+@media screen and (max-width: 1100px) {
+    #body[data-page=deep_page] .deeppage-articles {
+        grid-template-columns: repeat(1, 1fr) !important;
+        gap: 24px 36px
+    }
+}
+
+#body[data-page=deep_page] .body-faq {
+    background: #F2F4F6
+}
+
+
